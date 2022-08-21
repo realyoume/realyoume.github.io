@@ -1358,7 +1358,7 @@ canvas:not(#ribbon-canvas),
   --card-hover-box-shadow: 0 3px 8px 6px rgba(7,17,27,0.09);
   --pseudo-hover: #ff7242;
   --headline-presudo: #a0a0a0;
-  --scrollbar-color: #49b1f5;
+  --scrollbar-color: #b6b6b6;
 }
 body {
   position: relative;
@@ -1817,7 +1817,7 @@ figure.highlight pre .javascript .function {
 #article-container .code-expand-btn:not(.expand-done) ~ table,
 #article-container .code-expand-btn:not(.expand-done) ~ pre {
   overflow: hidden;
-  height: 200px;
+  height: 600px;
 }
 @-moz-keyframes code-expand-key {
   0% {
