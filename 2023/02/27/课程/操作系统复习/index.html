@@ -1,0 +1,440 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>操作系统复习 | realyoume</title><meta name="keywords" content="学习,课程,操作系统"><meta name="author" content="realyoume"><meta name="copyright" content="realyoume"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[2023年2月4日] 选择题操作系统 系统调用是操作系统向用户程序提供的接口  页面替换算法FIFO有可能会产生 Belady 异常现象  Belady 异常现象：在分页式虚拟存储器管理中，发生缺页时的置换算法采用FIFO（先进先出）算法时，如果对一个进程未分配它所要求的全部页面，有时就会出现分配的页面数增多但缺页率反而提高的异常现象。  分时操作系统允许在一台主机上同时联接多台终端，多个用户可">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统复习">
+<meta property="og:url" content="http://realyoume.github.io/2023/02/27/%E8%AF%BE%E7%A8%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/index.html">
+<meta property="og:site_name" content="realyoume">
+<meta property="og:description" content="[2023年2月4日] 选择题操作系统 系统调用是操作系统向用户程序提供的接口  页面替换算法FIFO有可能会产生 Belady 异常现象  Belady 异常现象：在分页式虚拟存储器管理中，发生缺页时的置换算法采用FIFO（先进先出）算法时，如果对一个进程未分配它所要求的全部页面，有时就会出现分配的页面数增多但缺页率反而提高的异常现象。  分时操作系统允许在一台主机上同时联接多台终端，多个用户可">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/80/v2-904505bcf0c424788f6028b8952aa2e7_720w.jpg">
+<meta property="article:published_time" content="2023-02-27T01:48:00.000Z">
+<meta property="article:modified_time" content="2023-02-27T02:18:19.485Z">
+<meta property="article:author" content="realyoume">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="课程">
+<meta property="article:tag" content="操作系统">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/80/v2-904505bcf0c424788f6028b8952aa2e7_720w.jpg"><link rel="shortcut icon" href="/pic/favicon.png"><link rel="canonical" href="http://realyoume.github.io/2023/02/27/%E8%AF%BE%E7%A8%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":600},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '操作系统复习',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-27 10:18:19'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/pic/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">realyoume</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">操作系统复习</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-27T01:48:00.000Z" title="发表于 2023-02-27 09:48:00">2023-02-27</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-27T02:18:19.485Z" title="更新于 2023-02-27 10:18:19">2023-02-27</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>12分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="操作系统复习"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>[2023年2月4日]</p>
+<h1 id="选择题"><a href="#选择题" class="headerlink" title="选择题"></a>选择题</h1><h2 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h2><ol>
+<li><p><strong>系统调用</strong>是操作系统向用户程序提供的<strong>接口</strong></p>
+</li>
+<li><p>页面替换算法FIFO有可能会产生 Belady 异常现象</p>
+<p> Belady 异常现象：在分页式虚拟存储器管理中，发生缺页时的置换算法采用<strong>FIFO（先进先出）算法</strong>时，如果对一个进程未分配它所要求的全部页面，有时就会出现<strong>分配的页面数增多但缺页率反而提高</strong>的异常现象。</p>
+</li>
+<li><p><strong>分时操作系统</strong>允许在一台主机上同时联接多台终端，多个用户可以通过各自的终端同时交互使用计算机</p>
+</li>
+<li><p>采取<strong>分段式存储管理</strong>不会产生内部碎片</p>
+<p><strong>分页式存储管理</strong>不会产生外部碎片</p>
+</li>
+<li><p>linux系统中的slab分配器，采取<strong>伙伴系统</strong>内存管理方式</p>
+</li>
+<li><p>Solaris 的多线程的实现方式为<strong>混合式</strong></p>
+</li>
+<li><p>如果 I&#x2F;O 设备与存储设备进行数据交换不经过 CPU 来完成，这种数据交换方式是<strong>DMA方式</strong></p>
+<p>DMA(Direct Memory Access，直接内存存取) 是所有现代电脑的重要特色，它允许不同速度的硬件装置来沟通，而不需要依赖于 CPU 的大量中断负载。</p>
+</li>
+<li><p>引入多道程序设计技术的前提条件之一是系统具有<strong>中断功能</strong></p>
+<p>多道程序设计技术是指在内存同时放若干道程序，使它们在系统中并发执行，共享系统中的各种资源。</p>
+</li>
+<li><p>在操作系统中，临界区指<strong>一段程序</strong></p>
+<p>   临界资源：一次仅允许一个进程使用的共享资源</p>
+<p>   临界区：每个进程中访问临界资源的那段程序称之为临界区</p>
+</li>
+<li><p>实模式下 16 位 CPU 使用段偏移方式的寻址能力为<strong>1M</strong></p>
+<p>   实模式下，段基址：段偏移量&#x3D;4:16，共20位，寻址能力1M</p>
+</li>
+<li><p>下面哪些指令是从实模式进入保护模式需要的指令</p>
+<pre><code>lgdt [GdtPtr]、 out 92h, al 、mov cr0, eax
+</code></pre>
+</li>
+<li><p>FAT12 文件系统里，FAT 表的数量和每张 FAT 表占用的扇区数量为<strong>2，9</strong></p>
+</li>
+<li><p>操作系统里没有下面哪种描述符表<del>KDT</del></p>
+<p>   全局描述符表GDT，局部描述符表LDT，断描述符表IDT</p>
+</li>
+<li><p>C语言中调用汇编函数的方法为，<strong>C代码中使用extern声明，汇编中使用global导出</strong></p>
+</li>
+<li><p>页表大小取决于虚拟空间大小，反向页表大小取决于真实空间大小</p>
+</li>
+<li><p>对进程的管理和控制使用<strong>原语</strong></p>
+</li>
+<li><p>操作系统是对<strong>计算机资源</strong>管理的软件</p>
+</li>
+<li><p>配置了操作系统的机器是⼀台⽐原来的物理机器功能更强的计算机，这样的计算机只是⼀台逻辑上的<br>  计算机，称为___虚拟___计算机</p>
+</li>
+<li><p><strong>实时操作系统</strong>，该操作系统的系统响应时间的重要性超过协同资源的利⽤率，它被⼴泛地应⽤于卫星控制、导弹发射、⼯业控制、⻜机订票业务灯领域。</p>
+</li>
+<li><p>如果分时系统的时间⽚⼀定，那么<strong>⽤户数越多</strong>，则响应时间越⻓。</p>
+</li>
+<li><p>实时操作系统必须在__规定时间__内处理来⾃外部的事件</p>
+</li>
+<li><p>实时系统 必须要及时响应、快速处理、有⾼可靠性和安全性。</p>
+</li>
+<li><p>⽤户程序的输⼊和输出操作实际上由___操作系统___完成</p>
+</li>
+<li><p>在操作系统中，并发性是指若⼲个事件在同⼀<strong>时间间隔</strong>内发⽣</p>
+</li>
+<li><p>若把操作系统看成计算机系统资源的管理者，<strong>中断</strong>不属于操作系统所管理的资源。</p>
+</li>
+<li><p>提⾼处理器资源利⽤率的关键技术是 <strong>多道程序设计技术</strong></p>
+</li>
+<li><p>操作系统中采⽤多道程序设计提⾼CPU和外部设备的<strong>利⽤率</strong></p>
+</li>
+<li><p>当计算机提供了管态和⽬态时，<strong>输⼊输出指令</strong>必须在管态下执⾏</p>
+<p>  管态 即 内核态 ， 目态 即 用户态</p>
+</li>
+<li><p>当CPU执⾏操作系统代码时，称处理机处于___管态___</p>
+</li>
+<li><p>特权指令是指__其执⾏有可能有损系统安全性的指令__</p>
+</li>
+<li><p>计算机系统中判断是否有中断事件发⽣应该在__执⾏完⼀条指令后__</p>
+</li>
+</ol>
+<h2 id="进程管理"><a href="#进程管理" class="headerlink" title="进程管理"></a>进程管理</h2><ol>
+<li><p><strong>进程映像</strong>也称进程图像，是进程执行的上下文环境，包括程序块、数据块、核心栈、进程控制块（PCB）。</p>
+</li>
+<li><p>__静态__优先权是在创建进程时确定的，确定之后在整个进程运⾏期间不再改变</p>
+<p> 动态优先权：在进程创建时赋予，随着进程的进行发生改变，以获得更好的性能</p>
+</li>
+<li><p>下列进程状态变化中，___等待态-&gt;运⾏态___变化是不可能发⽣的。</p>
+</li>
+<li><p>当__时间⽚__到时，进程从运⾏状态变为就绪状态。</p>
+<p> 根据时间片轮转算法，每个进程的时间片结束后，若进程还没有执行完，则进程从运行态变成就绪态，选择新的进程使用处理器。</p>
+</li>
+<li><p>进程管理中，当__等待的事情发⽣__，进程从等待态变成就绪态。</p>
+</li>
+<li><p>下⾯对进程的描述中，<strong>错误</strong>的是 <del>进程是指令的集合</del></p>
+</li>
+<li><p>下⾯所述步骤中，__由调度程序为进程分配CPU__不是创建进程所必需的</p>
+</li>
+<li><p>多道程序环境下，操作系统分配资源以__进程__为基本单位。</p>
+</li>
+<li><p>下述哪⼀个选项体现了原语的主要特点__不可分割性__</p>
+</li>
+<li><p>关于内核级线程，以下描述不正确的是<del>控制权从⼀个线程传送到另⼀个线程时不需要⽤户态-内核态-⽤户态的模式切换</del>。</p>
+<p>用户级线程：内核无感知，可以在不支持线程的操作系统中实现，一个用户级线程的阻塞将会引起整个进程的阻塞。</p>
+<p>内核级线程：切换由内核控制，充分利用多核CPU，但线程切换经历用户态-内核态-用户态，占用系统资源。</p>
+</li>
+<li><p>⼀个进程被唤醒意味着__进程变为就绪状态__</p>
+</li>
+<li><p>在引⼊线程的操作系统中，资源分配的基本单位还是__进程__。</p>
+</li>
+<li><p>在下述关于⽗进程和⼦进程的叙述中，正确的是__⽗进程和⼦进程可以并发执⾏__</p>
+<p>  父进程：创建了其它进程的进程</p>
+<p>  子进程：被父进程创建的进程</p>
+</li>
+<li><p>所谓“可重⼊”程序是指___能够被多个进程共享的程序___</p>
+</li>
+<li><p>原语是___不可中断的指令序列___</p>
+</li>
+<li><p>在进程调度算法中，对短进程不利的是__先来先服务算法__</p>
+</li>
+<li><p>⼀个可共享的程序在执⾏过程中是不能被修改的，这样的程序代码应该是__可重⼊代码__</p>
+<p>  可重入代码：可重入代码(Reentry code)也叫纯代码(Pure code)是一种允许多个进程同时访问的代码。为了使各进程所执行的代码完全相同，故不允许任何进程对其进行修改。</p>
+</li>
+<li><p>在UNIX系统中运⾏以下程序，最多可再产⽣出___7___进程</p>
+  <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">main</span>( )&#123;</span><br><span class="line">     fork( ); <span class="comment">/*←pc(程序计数器)，进程A</span></span><br><span class="line"><span class="comment">     fork( );</span></span><br><span class="line"><span class="comment">     fork( );</span></span><br><span class="line"><span class="comment">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202302271017053.png" alt="image-20230225121726804"></p>
+</li>
+<li><p><strong>三状态进程</strong>模型</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202302271018822.jpeg" alt="img"></p>
+</li>
+<li><p><strong>五状态进程</strong>模型以及状态转移图</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202302271018539.png" alt="image-20230204141606728"></p>
+</li>
+</ol>
+<h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2><ol>
+<li><p>静态重定位的时机是__程序装⼊时__</p>
+<p> 地址重定位：操作系统把用户程序指令中的相对地址变换成为所在存储中的绝对地址的过程</p>
+<p> 地址重定位实现了：从逻辑地址到物理地址的转换</p>
+<p> 静态重定位：在程序运行之前，为用户程序实行了地址重定位工作</p>
+<p> 动态重定位：在程序执行寻址时进行重定位，访问地址时，通过地址变换机构改变为内存地址</p>
+</li>
+<li><p>能够装⼊内存任何位置的代码程序必须是__可动态链接的__</p>
+</li>
+<li><p>在可变式分区管理中，采⽤内存移动技术的⽬的是__合并空闲区__</p>
+</li>
+<li><p>在存储管理中，采⽤覆盖与交换技术的⽬的是__减少程序占⽤的主存空间__</p>
+</li>
+<li><p>在分区存储管理中，下⾯的__⾸次适应法__最有可能使得⾼地址空间变成为⼤的空闲区</p>
+<p> 分区分配算法包括</p>
+<ul>
+<li>首次适应算法 每次都从首地址开始</li>
+<li>循环首次适应算法 从上一次结束的地址开始</li>
+<li>最佳适应算法 将空闲分区从小到大串成链表，每次选择最合适的</li>
+<li>最坏适应算法  将空闲分区从大到小串成链表，每次选择最大的</li>
+</ul>
+</li>
+<li><p>以下哪种__⻚式__存储管理能提供虚存</p>
+</li>
+<li><p>在分⻚式虚存中，分⻚由__操作系统__实现</p>
+</li>
+<li><p>在虚拟⻚式存储管理⽅案中，下⾯__缺⻚中断__完成将⻚⾯调⼊内存的⼯作</p>
+</li>
+<li><p>作业在执⾏中发⽣了缺⻚中断，经操作系统处理后，应该让其执⾏__被中断的__指令</p>
+</li>
+<li><p>在请求分⻚存储管理中，当访问的⻚⾯不在内存时，便产⽣缺⻚中断，缺⻚中断是属于__I&#x2F;O中断__</p>
+</li>
+<li><p>通常所说的”存储保护”的基本含义是__防⽌程序间越界访问__</p>
+</li>
+<li><p>LRU置换算法所基于的思想是__在最近的过去很久未使⽤的在最近的将来也不会被使⽤__</p>
+</li>
+<li><p>在下⾯关于虚拟存储器的叙述中，正确的是要求<strong>程序运⾏前不必全部装⼊内存且在运⾏过程中不必⼀直驻留在内存</strong></p>
+</li>
+<li><p>虚存的可⾏性基础是__程序执⾏的局部性__</p>
+</li>
+<li><p>把逻辑地址转变为内存的物理地址的过程称作__重定位或地址映射__</p>
+</li>
+<li><p>在段⻚式存储管理系统中其虚拟地址空间是__三维__的</p>
+</li>
+<li><p>虚拟分页的原理</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202302271018128.webp" alt="img"></p>
+</li>
+</ol>
+<h2 id="IO管理"><a href="#IO管理" class="headerlink" title="IO管理"></a>IO管理</h2><ol>
+<li><p>按__信息交换单位__分类可将设备分为块设备和字符设备</p>
+</li>
+<li><p>CPU输出数据的速度远远⾼于打印机的打印速度，为了解决这⼀⽭盾，可采⽤<strong>缓冲技术</strong></p>
+</li>
+<li><p>通过硬件和软件的功能扩充，把原来独占的设备改造成能为若⼲⽤户共享的设备，这种设备称为__虚拟设备__</p>
+</li>
+<li><p>通道⼜称I&#x2F;O处理机，它⽤于实现__内存和外设__之间的信息传输</p>
+</li>
+<li><p>为了使多个进程能有效地同时处理输⼊和输出，最好使⽤__缓冲池__结构的缓冲技术</p>
+</li>
+<li><p>如果I&#x2F;O设备与存储设备进⾏数据交换不经过CPU来完成，这种数据交换⽅式是__DMA⽅式__</p>
+</li>
+<li><p>在采⽤SPOOLing技术的系统中，⽤户的打印结果⾸先被送到__磁盘固定区域__</p>
+<p> SPOOLing 技术是用于将 I\O 设备进行虚拟化的技术</p>
+<p> <img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202302271018297.png" alt="image-20230225124840326"></p>
+</li>
+<li><p>⼤多数低速设备都属于__独享__设备</p>
+</li>
+<li><p>__磁盘__是直接存取的存储设备。</p>
+</li>
+<li><p>操作系统中的SPOOLing技术，实质是指__独占设备__转化为共享设备的技术</p>
+</li>
+<li><p>在操作系统中，__通道技术__指的是⼀种硬件机制。</p>
+<p>  通道是独立于中央处理器的，专门负责数据I&#x2F;O传输工作的处理单元</p>
+</li>
+<li><p>在操作系统中，⽤户程序申请使⽤I&#x2F;O设备时，通常采⽤<strong>逻辑设备名</strong></p>
+</li>
+<li><p>采⽤假脱机技术，将磁盘的⼀部分作为公共缓冲区以代替打印机，⽤户对打印机的操作实际上是对磁<br>  盘的存储操作，⽤以代替打印机的部分是__虚拟设备__</p>
+</li>
+<li><p><strong>先来先服务</strong>算法是设备分配常⽤的⼀种算法，很自然</p>
+</li>
+<li><p>将系统中的每⼀台设备按某种原则进⾏统⼀的编号，这些编号作为区分硬件和识别设备的代号，该编<br>  号称为设备的__绝对号__</p>
+</li>
+<li><p>通道程序是由<strong>一系列通道指令</strong>组成</p>
+<p>  通道是一个具有特殊功能的处理器，它有自己的指令和程序，专门负责数据输入输出的传输控制 (CPU把传输控制的功能下放给通道)。通道受CPU的I&#x2F;O指令启动、停止或改变其工作状态。</p>
+<p>  通道指令又叫通道控制字 (CCW)，它是通道用于执行I&#x2F;O操作的指令，它可以由管理程序存放在主存的任何地方，由通道从主存取出并执行。</p>
+<p>  通道程序由通道指令组成，它完成某种外围设备与主存传送信息的操作，如将磁带记录区的部分内容送到指定地址的主存缓冲区内。</p>
+</li>
+<li><p>在 I&#x2F;O 软件的分层结构中，<strong>设备驱动程序</strong>负责将把用户提交的逻辑 I&#x2F;O 请求转化为物理I&#x2F;O 操作的启动和执行。</p>
+</li>
+<li><p>使⽤SPOOLing系统的⽬的是为了提⾼___I&#x2F;O设备___的使⽤效率</p>
+</li>
+<li><p>下列算法中，⽤于磁盘移臂调度的是__最短寻找时间算法__</p>
+</li>
+<li><p>IO软件的层次</p>
+<ul>
+<li>用户级IO软件</li>
+<li>与设备无关的操作系统软件</li>
+<li>设备驱动软件</li>
+<li>中断处理程序</li>
+</ul>
+</li>
+</ol>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><ol>
+<li><p>Unix系统中，文件的索引结构存放在<strong>inode节点</strong>中</p>
+</li>
+<li><p>操作系统中对⽂件进⾏管理的部分叫做__⽂件系统__</p>
+</li>
+<li><p>为了解决不同⽤户⽂件的“命名冲突”问题，通常在⽂件系统中采⽤<strong>多级⽬录</strong></p>
+</li>
+<li><p>无结构的文件含义是<strong>流式文件</strong></p>
+<p>有结构文件 记录式文件</p>
+</li>
+<li><p>下列⽂件中不属于物理⽂件的是__记录式⽂件__</p>
+</li>
+<li><p>⽂件系统的主要⽬的是__实现对⽂件的按名存取__</p>
+</li>
+<li><p>⽂件系统采⽤多级⽬录结构后，对于不同⽤户的⽂件，其⽂件名__可以相同也可以不同__</p>
+</li>
+<li><p>⽂件⽬录的主要作⽤是__按名存取__</p>
+</li>
+<li><p>在⽂件系统中，⽂件的不同物理结构有不同的优缺点。在下列⽂件的物理结构中，___索引结构___具有直接读写⽂件任意⼀个记录的能⼒，⼜提⾼了⽂件存储空间的利⽤率</p>
+</li>
+<li><p>⽂件系统⽤__⽬录__组织⽂件</p>
+</li>
+<li><p>⽂件路径名是指<strong>从根⽬录到⽂件所经历的路径中的各符号名的集合</strong></p>
+</li>
+<li><p>⼀个⽂件的相对路径名是从__当前⽬录__开始，逐步沿着各级⼦⽬录追溯，最后到指定⽂件的整个通路上所有⼦⽬录名组成的⼀个字符串</p>
+</li>
+<li><p>对一个文件的访问，常由<strong>用户访问权限和文件属性</strong>共同限制</p>
+</li>
+<li><p>存放在磁盘上的⽂件<strong>既可随机访问，⼜可顺序访问</strong></p>
+</li>
+<li><p>在文件系统中，位示图可以用于<strong>磁盘空间的管理</strong></p>
+</li>
+<li><p>常⽤的⽂件存取⽅法有两种：<strong>顺序存取和随机存取</strong></p>
+</li>
+<li><p>Unix系统中，通过__⽬录项__实现⽂件系统的按名存取功能</p>
+</li>
+<li><p>Unix⽂件系统中，打开⽂件的系统调⽤open输⼊参数包含___⽂件名___</p>
+</li>
+<li><p>Unix⽂件系统中，打开⽂件的系统调⽤open返回值是__⽂件描述符（字）__</p>
+</li>
+<li><p>Unix⽂件系统中，打开⽂件的系统调⽤open返回值是__⽂件描述符（字）__</p>
+</li>
+</ol>
+<h1 id="大题"><a href="#大题" class="headerlink" title="大题"></a>大题</h1><h2 id="进程调度算法"><a href="#进程调度算法" class="headerlink" title="进程调度算法"></a>进程调度算法</h2><ol>
+<li>时间片轮转算法</li>
+<li>先来先服务算法</li>
+<li>多级反馈队列算法</li>
+</ol>
+<h2 id="页面替换算法"><a href="#页面替换算法" class="headerlink" title="页面替换算法"></a>页面替换算法</h2><ol>
+<li>opt算法，未来最少使用，理论上最好，实际上要知道未来怎么样</li>
+<li>LRU，最近最少使用算法，看哪一个页的使用时间最远，也就是最近最少使用</li>
+<li>colck算法，一个指针，指向刚变化的下一位，进来时为1，出去时1变0，0出去，命中时变成1</li>
+</ol>
+<h2 id="磁头寻道算法"><a href="#磁头寻道算法" class="headerlink" title="磁头寻道算法"></a>磁头寻道算法</h2><ol>
+<li>FCFS</li>
+<li>SSTF（最短寻道时间优先）</li>
+<li>SCAN</li>
+<li>C-SCAN（循环扫描）</li>
+<li>LOOK</li>
+<li>C-LOOK（电梯）</li>
+</ol>
+<h2 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h2><h2 id="PV"><a href="#PV" class="headerlink" title="PV"></a>PV</h2><h2 id="霍尔管程"><a href="#霍尔管程" class="headerlink" title="霍尔管程"></a>霍尔管程</h2></article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E8%AF%BE%E7%A8%8B/">课程</a><a class="post-meta__tags" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a></div><div class="post_share"><div class="social-share" data-image="https://pic3.zhimg.com/80/v2-904505bcf0c424788f6028b8952aa2e7_720w.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/04/02/%E8%AF%BB%E4%B9%A6/%E3%80%8A%E7%82%92%E8%82%A1%E7%9A%84%E6%99%BA%E6%85%A7%E3%80%8B/"><img class="prev-cover" src="https://pic3.zhimg.com/80/v2-904505bcf0c424788f6028b8952aa2e7_720w.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《炒股的智慧》</div></div></a></div><div class="next-post pull-right"><a href="/2023/02/23/%E8%AF%BE%E7%A8%8B/web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0/"><img class="next-cover" src="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">web前端复习</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/02/23/%E8%AF%BE%E7%A8%8B/web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0/" title="web前端复习"><img class="cover" src="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-23</div><div class="title">web前端复习</div></div></a></div><div><a href="/2022/09/29/%E8%AF%BE%E7%A8%8B/%E4%BD%93%E9%AA%8C%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/" title="体验华为云服务器并测试网速"><img class="cover" src="https://pic1.zhimg.com/80/v2-8cad20bbb75b352e5290001bbc3cb9cf_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">体验华为云服务器并测试网速</div></div></a></div><div><a href="/2022/09/27/%E8%AF%BE%E7%A8%8B/%E7%94%A8Bochs%E5%86%99%E5%87%BA%E7%AE%80%E5%8D%95%E7%9A%84HelloWorld/" title="用Bochs写出简单的HelloWorld"><img class="cover" src="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-27</div><div class="title">用Bochs写出简单的HelloWorld</div></div></a></div><div><a href="/2022/10/02/%E8%AF%BE%E7%A8%8B/%E7%94%A8nasm%E5%86%99%E5%87%BAHelloWorld/" title="用nasm写出HelloWorld"><img class="cover" src="https://pic2.zhimg.com/v2-d9bc3c1899c4a2dbe8cd692677b07559_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-02</div><div class="title">用nasm写出HelloWorld</div></div></a></div><div><a href="/2022/10/25/%E8%AF%BE%E7%A8%8B/%E7%94%A8nasm%E5%86%99%E5%87%BA%E5%8A%A0%E6%B3%95%E3%80%81%E4%B9%98%E6%B3%95/" title="用nasm写出加法、乘法"><img class="cover" src="https://picx.zhimg.com/80/v2-3fcdfeacc10696e3f71d66a9ba6e9cc4_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-25</div><div class="title">用nasm写出加法、乘法</div></div></a></div><div><a href="/2022/10/11/%E8%AF%BE%E7%A8%8B/%E7%94%A8weka%E5%AE%9E%E7%8E%B0pca%E9%99%8D%E7%BB%B4%E7%AE%80%E5%8D%95%E7%A4%BA%E4%BE%8B/" title="用weka实现PCA降维的简单示例"><img class="cover" src="https://picx.zhimg.com/80/v2-f85f658e4f785d48cf04dd8f47acc6fa_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-11</div><div class="title">用weka实现PCA降维的简单示例</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/pic/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">realyoume</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">51</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/realyoume"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/realyoume" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">选择题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.</span> <span class="toc-text">操作系统</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.</span> <span class="toc-text">进程管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86"><span class="toc-number">1.3.</span> <span class="toc-text">内存管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IO%E7%AE%A1%E7%90%86"><span class="toc-number">1.4.</span> <span class="toc-text">IO管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">文件管理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">大题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">进程调度算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E6%9B%BF%E6%8D%A2%E7%AE%97%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">页面替换算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A3%81%E5%A4%B4%E5%AF%BB%E9%81%93%E7%AE%97%E6%B3%95"><span class="toc-number">2.3.</span> <span class="toc-text">磁头寻道算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%93%B6%E8%A1%8C%E5%AE%B6%E7%AE%97%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">银行家算法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PV"><span class="toc-number">2.5.</span> <span class="toc-text">PV</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9C%8D%E5%B0%94%E7%AE%A1%E7%A8%8B"><span class="toc-number">2.6.</span> <span class="toc-text">霍尔管程</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/03/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" title="项目实战"><img src="https://pic1.zhimg.com/80/v2-a196f39112d5287f0214eb50b94563ce_720w.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="项目实战"/></a><div class="content"><a class="title" href="/2023/06/03/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" title="项目实战">项目实战</a><time datetime="2023-06-11T08:10:11.594Z" title="更新于 2023-06-11 16:10:11">2023-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/06/%E7%94%B5%E5%BD%B1/%E3%80%8A%E5%9E%AB%E5%BA%95%E8%BE%A3%E5%A6%B9%E3%80%8B/" title="《垫底辣妹》"><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306062104776.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《垫底辣妹》"/></a><div class="content"><a class="title" href="/2023/06/06/%E7%94%B5%E5%BD%B1/%E3%80%8A%E5%9E%AB%E5%BA%95%E8%BE%A3%E5%A6%B9%E3%80%8B/" title="《垫底辣妹》">《垫底辣妹》</a><time datetime="2023-06-06T13:26:07.680Z" title="更新于 2023-06-06 21:26:07">2023-06-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/04/02/%E8%AF%BB%E4%B9%A6/%E3%80%8A%E7%82%92%E8%82%A1%E7%9A%84%E6%99%BA%E6%85%A7%E3%80%8B/" title="《炒股的智慧》"><img src="https://pic3.zhimg.com/80/v2-904505bcf0c424788f6028b8952aa2e7_720w.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《炒股的智慧》"/></a><div class="content"><a class="title" href="/2023/04/02/%E8%AF%BB%E4%B9%A6/%E3%80%8A%E7%82%92%E8%82%A1%E7%9A%84%E6%99%BA%E6%85%A7%E3%80%8B/" title="《炒股的智慧》">《炒股的智慧》</a><time datetime="2023-06-03T14:50:00.777Z" title="更新于 2023-06-03 22:50:00">2023-06-03</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/01/%E5%90%8E%E7%AB%AF/RabbitMQ%E8%BF%9B%E9%98%B6/" title="RabbitMQ进阶"><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306011644574.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RabbitMQ进阶"/></a><div class="content"><a class="title" href="/2023/06/01/%E5%90%8E%E7%AB%AF/RabbitMQ%E8%BF%9B%E9%98%B6/" title="RabbitMQ进阶">RabbitMQ进阶</a><time datetime="2023-06-01T13:50:04.232Z" title="更新于 2023-06-01 21:50:04">2023-06-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/05/30/%E5%90%8E%E7%AB%AF/%E5%88%9D%E5%AD%A6%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98/" title="初学多级缓存"><img src="https://picx.zhimg.com/80/v2-73b8307b2db44c617f4e8515ce67dd39_720w.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="初学多级缓存"/></a><div class="content"><a class="title" href="/2023/05/30/%E5%90%8E%E7%AB%AF/%E5%88%9D%E5%AD%A6%E5%A4%9A%E7%BA%A7%E7%BC%93%E5%AD%98/" title="初学多级缓存">初学多级缓存</a><time datetime="2023-05-31T14:45:14.479Z" title="更新于 2023-05-31 22:45:14">2023-05-31</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pic1.zhimg.com/v2-83876de3f901861a2939eaf66f30050c_r.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By realyoume</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
