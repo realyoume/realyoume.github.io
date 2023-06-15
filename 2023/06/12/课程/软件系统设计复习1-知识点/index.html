@@ -1,0 +1,309 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>软件系统设计复习1-知识点 | realyoume</title><meta name="keywords" content="学习,课程,软件系统设计"><meta name="author" content="realyoume"><meta name="copyright" content="realyoume"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[2023年6月12日] 软件模式将模式的一般概念应用于软件开发领域，即软件开发的总体指导思路或参照样板 软件模式可以认为是对软件开发这一特定“问题”的“解法”的某种统一表示，软件模式等于一定条件下的出现的问题以及解法 组成：问题描述，前提条件，解法，效果 遵循大三律（Rule of Three），经过三个以上不同类型的系统的检验，才能升格为模式 设计原则 目标：开闭原则 指导：最小知识原则 基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件系统设计复习1-知识点">
+<meta property="og:url" content="http://realyoume.github.io/2023/06/12/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A01-%E7%9F%A5%E8%AF%86%E7%82%B9/index.html">
+<meta property="og:site_name" content="realyoume">
+<meta property="og:description" content="[2023年6月12日] 软件模式将模式的一般概念应用于软件开发领域，即软件开发的总体指导思路或参照样板 软件模式可以认为是对软件开发这一特定“问题”的“解法”的某种统一表示，软件模式等于一定条件下的出现的问题以及解法 组成：问题描述，前提条件，解法，效果 遵循大三律（Rule of Three），经过三个以上不同类型的系统的检验，才能升格为模式 设计原则 目标：开闭原则 指导：最小知识原则 基础">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-d9bc3c1899c4a2dbe8cd692677b07559_b.jpg">
+<meta property="article:published_time" content="2023-06-12T02:08:00.000Z">
+<meta property="article:modified_time" content="2023-06-15T04:48:01.250Z">
+<meta property="article:author" content="realyoume">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="课程">
+<meta property="article:tag" content="软件系统设计">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.zhimg.com/v2-d9bc3c1899c4a2dbe8cd692677b07559_b.jpg"><link rel="shortcut icon" href="/pic/favicon.png"><link rel="canonical" href="http://realyoume.github.io/2023/06/12/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A01-%E7%9F%A5%E8%AF%86%E7%82%B9/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":600},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '软件系统设计复习1-知识点',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-06-15 12:48:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/pic/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">52</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">realyoume</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">软件系统设计复习1-知识点</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-12T02:08:00.000Z" title="发表于 2023-06-12 10:08:00">2023-06-12</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-06-15T04:48:01.250Z" title="更新于 2023-06-15 12:48:01">2023-06-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AF%BE%E7%A8%8B/">课程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>6分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="软件系统设计复习1-知识点"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>[2023年6月12日]</p>
+<h1 id="软件模式"><a href="#软件模式" class="headerlink" title="软件模式"></a>软件模式</h1><p>将模式的一般概念应用于软件开发领域，即软件开发的总体指导思路或参照样板</p>
+<p>软件模式可以认为是对软件开发这一特定“问题”的“解法”的某种统一表示，软件模式等于一定条件下的出现的问题以及解法</p>
+<p>组成：问题描述，前提条件，解法，效果</p>
+<p>遵循大三律（Rule of Three），经过三个以上不同类型的系统的检验，才能升格为模式</p>
+<h1 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h1><ul>
+<li>目标：开闭原则</li>
+<li>指导：最小知识原则</li>
+<li>基础：单一职责原则，可变性封装原则</li>
+<li>实现：依赖倒转原则，合成复用原则，里氏替换原则，接口隔离原则</li>
+</ul>
+<h2 id="里氏替换原则"><a href="#里氏替换原则" class="headerlink" title="里氏替换原则"></a>里氏替换原则</h2><p>Liskov Substitution Principle, LSP</p>
+<p>所有引用基类的地方都能够透明的使用其子类对象</p>
+<p>把基类都替换成它的子类，程序将不会产生任何错误和异常</p>
+<p>核心思想：子类必须能够完全替代其基类，而不需要修改调用基类的代码</p>
+<p>里氏代换原则是实现开闭原则的重要方式之一，我们可以在不修改已有代码的前提下，通过添加新的子类来扩展功能</p>
+<h2 id="单一职责原则"><a href="#单一职责原则" class="headerlink" title="单一职责原则"></a>单一职责原则</h2><p>Single Responsibility Principle, SRP</p>
+<p>一个对象应该只包含单一的职责，且该职责被完整地封装在一个类中</p>
+<p>一个类承担的职责越多，它被复用的可能性越小</p>
+<p>类的职责主要包括两个方面：数据职责和行为职责，数据职责通过其属性来体现，而行为职责通过其方法来体现</p>
+<p>单一职责原则是实现高内聚、低耦合的指导方针</p>
+<h2 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h2><p>Open-Closed Principle，OCP</p>
+<p>一个软件实体应该对扩展开放，对修改关闭</p>
+<p>在不修改源代码的情况下改变这个模块的行为</p>
+<p><strong>对可变性封装原则</strong></p>
+<p>Principle of Encapsulation of Variation, EVP</p>
+<p>要求找到系统的可变因素并将其封装起来</p>
+<h2 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h2><p>Dependence Inversion Principle, DIP</p>
+<p>高层模块不应该依赖低层模块，它们都应该依赖抽象。抽象不应该依赖于细节，细节应该依赖于抽象。</p>
+<p>要针对接口编程，不要针对实现编程</p>
+<p><strong>类之间的耦合</strong></p>
+<ol>
+<li>零耦合关系</li>
+<li>具体耦合关系</li>
+<li>抽象耦合关系</li>
+</ol>
+<p>抽象耦合是依赖倒转原则的关键</p>
+<h2 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h2><p>Interface Segregation Principle, ISP</p>
+<p>客户端不应该依赖那些不需要的接口</p>
+<p>将大接口分割成细小的接口</p>
+<p>使用专门的接口，而不是单一的总接口</p>
+<h2 id="合成复用原则"><a href="#合成复用原则" class="headerlink" title="合成复用原则"></a>合成复用原则</h2><p>Composite Reuse Principle, CRP</p>
+<p>Composition&#x2F; Aggregate Reuse Principle, CARP</p>
+<p>尽量使用对象组合，而不是继承来达到复用的目的。</p>
+<p>通过组合和继承都可以重用代码</p>
+<p>组合可以使系统更加灵活，类与类之间的耦合度降低</p>
+<p>谨慎使用继承，会增加系统复杂度和维护的难度</p>
+<h2 id="最小知识原则-迪米特法则"><a href="#最小知识原则-迪米特法则" class="headerlink" title="最小知识原则-迪米特法则"></a>最小知识原则-迪米特法则</h2><p>Least Knowledge Principle, LKP</p>
+<p>Law of Demeter, LoD</p>
+<p>一个软件实体应当尽可能少的与其他实体发生相互作用</p>
+<p>这样发生修改时影响也会很小</p>
+<p>对象之间的信息流量、流向以及信息的影响的控制，主要是对信息隐藏的控制</p>
+<h1 id="设计模式"><a href="#设计模式" class="headerlink" title="设计模式"></a>设计模式</h1><p>设计模式(Design Pattern)是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结</p>
+<p>使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性</p>
+<h2 id="模式分类"><a href="#模式分类" class="headerlink" title="模式分类"></a>模式分类</h2><h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><ol>
+<li><p>创建型模式 Creational</p>
+<p>创建对象</p>
+</li>
+<li><p>结构型模式 Structural</p>
+<p>处理类和对象的组合</p>
+</li>
+<li><p>行为型模式 Behavioral</p>
+<p>描述类或对象怎么交互和怎样分配职责</p>
+</li>
+</ol>
+<h3 id="范围"><a href="#范围" class="headerlink" title="范围"></a>范围</h3><ol>
+<li><p>类模式</p>
+<p>处理类和子类之间的关系，这些关系通过继承建立，在编译时刻就被确定下来，是属于静态的</p>
+</li>
+<li><p>对象模式</p>
+<p>处理对象间的关系，这些关系在运行时刻变化，更具动态性</p>
+</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306121454054.png" alt="image-20230612145446244"></p>
+<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><p>Strategy Pattern</p>
+<p>Policy Pattern</p>
+<p>在策略模式中，将一组可以互相替换的算法封装成独立的策略类，并使它们能够在同一个上下文中相互替换，以完成相同的任务。这样可以使算法的选择与使用相互分离，提高代码的灵活性和可维护性。</p>
+<ol>
+<li>策略接口</li>
+<li>具体策略类</li>
+<li>上下文类</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306121536744.png" alt="image-20230612153644354"></p>
+<h2 id="工厂方法模式"><a href="#工厂方法模式" class="headerlink" title="工厂方法模式"></a>工厂方法模式</h2><p>Factory Method Pattern</p>
+<p>工厂模式</p>
+<p>虚拟构造器(Virtual Constructor)模式</p>
+<p>多态工厂(Polymorphic Factory)模式</p>
+<p>在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即通过工厂子类来确定究竟应该实例化哪一个具体产品类</p>
+<ol>
+<li>抽象工厂类</li>
+<li>具体工厂类</li>
+<li>抽象产品类</li>
+<li>具体产品类</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306121547617.png" alt="image-20230612154741575"></p>
+<h2 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h2><p>Abstract Factory Pattern</p>
+<p>提供一个创建一系列相关或相互依赖对象的接口，而无须指定它们具体的类</p>
+<p>每个工厂可以生产多个抽象产品</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306121556482.png" alt="image-20230612155607212"></p>
+<h2 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h2><p>State Pattern</p>
+<p>Objects for States</p>
+<p>允许一个对象在其内部状态改变时改变它的行为，对象看起来似乎修改了它的类</p>
+<ol>
+<li>环境类</li>
+<li>抽象状态类</li>
+<li>具体状态类</li>
+</ol>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131428956.png" alt="image-20230613142812457"></p>
+<h2 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h2><p>Command Pattern</p>
+<p>Action Pattern</p>
+<p>Transaction Pattern</p>
+<p>将一个请求封装为一个对象，从而使我们可用不同的请求对客户进行参数化</p>
+<p>命令模式可以对发送者和接收者完全解耦</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131434826.png" alt="image-20230613143458294"></p>
+<h2 id="观察者模式"><a href="#观察者模式" class="headerlink" title="观察者模式"></a>观察者模式</h2><p>Observer Pattern</p>
+<p>发布-订阅（Publish&#x2F;Subscribe）模式，模型-视图（Model&#x2F;View）模式、源-监听器（Source&#x2F;Listener）模式，从属者（Dependents）模式</p>
+<p>建立一种对象与对象之间的依赖关系，一个对象发生改变时将自动通知其他对象，其他对象将相应做出反应</p>
+<p>观察目标 观察者</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131441215.png" alt="image-20230613144142302"></p>
+<h2 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h2><p>Mediator Pattern</p>
+<p>调停者模式</p>
+<p>用一个中介对象来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131446972.png" alt="image-20230613144629511"></p>
+<h2 id="模板方法模式"><a href="#模板方法模式" class="headerlink" title="模板方法模式"></a>模板方法模式</h2><p>Template Method Pattern</p>
+<p>定义一个操作中算法的骨架，而将一些步骤延迟到子类中，模板方法使得子类可以不改变一个算法的结构即可重定义该算法的某些特定步骤</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131450112.png" alt="image-20230613145032660"></p>
+<h2 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h2><p>Adapter Pattern</p>
+<p>Wrapper</p>
+<p>将一个接口转换成客户希望的另一个接口，适配器模式使接口不兼容的那些类可以一起工作</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131456707.png" alt="image-20230613145641644"></p>
+<h2 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h2><p>Composite Pattern</p>
+<p>“整体-部分”(Part-Whole)模式</p>
+<p>组合多个对象形成树形结构以表示“整体-部分”的结构层次。组合模式对单个对象（即叶子对象）和组合对象（即容器对象）的使用具有一致性</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131500867.png" alt="image-20230613150028800"></p>
+<h2 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h2><p>Decorator Pattern</p>
+<p>油漆工模式</p>
+<p>动态地给一个对象增加一些额外的职责，就增加对象功能来说，装饰模式比生成子类实现更为灵活</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131510806.png" alt="image-20230613151038731"></p>
+<h2 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h2><p>Facade Pattern</p>
+<p>门面模式</p>
+<p>外部与一个子系统的通信必须通过一个统一的外观对象进行，为子系统中的一组接口提供一个一致的界面，外观模式定义了一个高层接口，这个接口使得这一子系统更加容易使用。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131515840.png" alt="image-20230613151535782"></p>
+<h2 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h2><p>Proxy Pattern</p>
+<p>Surrogate Pattern</p>
+<p>给某一个对象提供一个代理，并由代理对象控制对原对象的引用</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306131522863.png" alt="image-20230613152239788"></p>
+<h1 id="质量属性"><a href="#质量属性" class="headerlink" title="质量属性"></a>质量属性</h1><ol>
+<li>Availability 可用性</li>
+<li>Flexibility 灵活性</li>
+<li>Reusability 可重用性</li>
+<li>Testability 可测试性</li>
+<li>Performance 性能</li>
+<li>Reliability 可靠性</li>
+<li>Maintainability 可维护性</li>
+<li>Scalability 可伸缩性</li>
+<li>Usability 易用性</li>
+<li>Security 安全</li>
+<li>Stability 稳定性</li>
+<li>Extensibility 可扩展性</li>
+<li>Configurability 可配置性</li>
+<li>Interoperability 跨系统可操作性</li>
+</ol>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/%E8%AF%BE%E7%A8%8B/">课程</a><a class="post-meta__tags" href="/tags/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/">软件系统设计</a></div><div class="post_share"><div class="social-share" data-image="https://pic2.zhimg.com/v2-d9bc3c1899c4a2dbe8cd692677b07559_b.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/13/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A02-%E8%AF%95%E9%A2%98/"><img class="prev-cover" src="https://pic1.zhimg.com/80/v2-8cad20bbb75b352e5290001bbc3cb9cf_720w.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">软件系统设计复习2-试题</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/06/%E7%94%B5%E5%BD%B1/%E3%80%8A%E5%9E%AB%E5%BA%95%E8%BE%A3%E5%A6%B9%E3%80%8B/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306062104776.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">《垫底辣妹》</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/06/13/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A02-%E8%AF%95%E9%A2%98/" title="软件系统设计复习2-试题"><img class="cover" src="https://pic1.zhimg.com/80/v2-8cad20bbb75b352e5290001bbc3cb9cf_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-06-13</div><div class="title">软件系统设计复习2-试题</div></div></a></div><div><a href="/2023/02/23/%E8%AF%BE%E7%A8%8B/web%E5%89%8D%E7%AB%AF%E5%A4%8D%E4%B9%A0/" title="web前端复习"><img class="cover" src="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-23</div><div class="title">web前端复习</div></div></a></div><div><a href="/2022/09/29/%E8%AF%BE%E7%A8%8B/%E4%BD%93%E9%AA%8C%E5%8D%8E%E4%B8%BA%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B9%B6%E6%B5%8B%E8%AF%95%E7%BD%91%E9%80%9F/" title="体验华为云服务器并测试网速"><img class="cover" src="https://pic1.zhimg.com/80/v2-8cad20bbb75b352e5290001bbc3cb9cf_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-29</div><div class="title">体验华为云服务器并测试网速</div></div></a></div><div><a href="/2023/02/27/%E8%AF%BE%E7%A8%8B/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%8D%E4%B9%A0/" title="操作系统复习"><img class="cover" src="https://pic3.zhimg.com/80/v2-904505bcf0c424788f6028b8952aa2e7_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-02-27</div><div class="title">操作系统复习</div></div></a></div><div><a href="/2022/09/27/%E8%AF%BE%E7%A8%8B/%E7%94%A8Bochs%E5%86%99%E5%87%BA%E7%AE%80%E5%8D%95%E7%9A%84HelloWorld/" title="用Bochs写出简单的HelloWorld"><img class="cover" src="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-27</div><div class="title">用Bochs写出简单的HelloWorld</div></div></a></div><div><a href="/2022/10/02/%E8%AF%BE%E7%A8%8B/%E7%94%A8nasm%E5%86%99%E5%87%BAHelloWorld/" title="用nasm写出HelloWorld"><img class="cover" src="https://pic2.zhimg.com/v2-d9bc3c1899c4a2dbe8cd692677b07559_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-10-02</div><div class="title">用nasm写出HelloWorld</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/pic/avatar.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">realyoume</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">74</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">52</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/realyoume"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/realyoume" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.</span> <span class="toc-text">软件模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="toc-number">2.</span> <span class="toc-text">设计原则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99"><span class="toc-number">2.1.</span> <span class="toc-text">里氏替换原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99"><span class="toc-number">2.2.</span> <span class="toc-text">单一职责原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E9%97%AD%E5%8E%9F%E5%88%99"><span class="toc-number">2.3.</span> <span class="toc-text">开闭原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%9D%E8%B5%96%E5%80%92%E8%BD%AC%E5%8E%9F%E5%88%99"><span class="toc-number">2.4.</span> <span class="toc-text">依赖倒转原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E9%9A%94%E7%A6%BB%E5%8E%9F%E5%88%99"><span class="toc-number">2.5.</span> <span class="toc-text">接口隔离原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E6%88%90%E5%A4%8D%E7%94%A8%E5%8E%9F%E5%88%99"><span class="toc-number">2.6.</span> <span class="toc-text">合成复用原则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%80%E5%B0%8F%E7%9F%A5%E8%AF%86%E5%8E%9F%E5%88%99-%E8%BF%AA%E7%B1%B3%E7%89%B9%E6%B3%95%E5%88%99"><span class="toc-number">2.7.</span> <span class="toc-text">最小知识原则-迪米特法则</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.</span> <span class="toc-text">设计模式</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E5%88%86%E7%B1%BB"><span class="toc-number">3.1.</span> <span class="toc-text">模式分类</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">3.1.1.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4"><span class="toc-number">3.1.2.</span> <span class="toc-text">范围</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.2.</span> <span class="toc-text">策略模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.3.</span> <span class="toc-text">工厂方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.4.</span> <span class="toc-text">抽象工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.5.</span> <span class="toc-text">状态模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.6.</span> <span class="toc-text">命令模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.7.</span> <span class="toc-text">观察者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%AD%E4%BB%8B%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.8.</span> <span class="toc-text">中介者模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.9.</span> <span class="toc-text">模板方法模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.10.</span> <span class="toc-text">适配器模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.11.</span> <span class="toc-text">组合模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.12.</span> <span class="toc-text">装饰模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%A4%96%E8%A7%82%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.13.</span> <span class="toc-text">外观模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F"><span class="toc-number">3.14.</span> <span class="toc-text">代理模式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B4%A8%E9%87%8F%E5%B1%9E%E6%80%A7"><span class="toc-number">4.</span> <span class="toc-text">质量属性</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/06/12/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A01-%E7%9F%A5%E8%AF%86%E7%82%B9/" title="软件系统设计复习1-知识点"><img src="https://pic2.zhimg.com/v2-d9bc3c1899c4a2dbe8cd692677b07559_b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软件系统设计复习1-知识点"/></a><div class="content"><a class="title" href="/2023/06/12/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A01-%E7%9F%A5%E8%AF%86%E7%82%B9/" title="软件系统设计复习1-知识点">软件系统设计复习1-知识点</a><time datetime="2023-06-15T04:48:01.250Z" title="更新于 2023-06-15 12:48:01">2023-06-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/13/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A02-%E8%AF%95%E9%A2%98/" title="软件系统设计复习2-试题"><img src="https://pic1.zhimg.com/80/v2-8cad20bbb75b352e5290001bbc3cb9cf_720w.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="软件系统设计复习2-试题"/></a><div class="content"><a class="title" href="/2023/06/13/%E8%AF%BE%E7%A8%8B/%E8%BD%AF%E4%BB%B6%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1%E5%A4%8D%E4%B9%A02-%E8%AF%95%E9%A2%98/" title="软件系统设计复习2-试题">软件系统设计复习2-试题</a><time datetime="2023-06-14T09:40:31.996Z" title="更新于 2023-06-14 17:40:31">2023-06-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/06/03/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" title="项目实战"><img src="https://pic1.zhimg.com/80/v2-a196f39112d5287f0214eb50b94563ce_720w.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="项目实战"/></a><div class="content"><a class="title" href="/2023/06/03/%E5%90%8E%E7%AB%AF/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/" title="项目实战">项目实战</a><time datetime="2023-06-11T13:09:47.330Z" title="更新于 2023-06-11 21:09:47">2023-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/21/%E7%94%B5%E5%BD%B1/%E3%80%8A%E5%BD%93%E5%B9%B8%E7%A6%8F%E6%9D%A5%E6%95%B2%E9%97%A8%E3%80%8B/" title="《当幸福来敲门》"><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306112000109.jpeg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《当幸福来敲门》"/></a><div class="content"><a class="title" href="/2022/08/21/%E7%94%B5%E5%BD%B1/%E3%80%8A%E5%BD%93%E5%B9%B8%E7%A6%8F%E6%9D%A5%E6%95%B2%E9%97%A8%E3%80%8B/" title="《当幸福来敲门》">《当幸福来敲门》</a><time datetime="2023-06-11T12:00:43.748Z" title="更新于 2023-06-11 20:00:43">2023-06-11</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/08/21/%E7%94%B5%E5%BD%B1/%E3%80%8A%E6%98%9F%E9%99%85%E7%A9%BF%E8%B6%8A%E3%80%8B/" title="《星际穿越》"><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306111952237.webp" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="《星际穿越》"/></a><div class="content"><a class="title" href="/2022/08/21/%E7%94%B5%E5%BD%B1/%E3%80%8A%E6%98%9F%E9%99%85%E7%A9%BF%E8%B6%8A%E3%80%8B/" title="《星际穿越》">《星际穿越》</a><time datetime="2023-06-11T11:52:53.147Z" title="更新于 2023-06-11 19:52:53">2023-06-11</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('https://pic1.zhimg.com/v2-83876de3f901861a2939eaf66f30050c_r.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By realyoume</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
