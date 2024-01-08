@@ -1,0 +1,661 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>项目实战 | realyoume</title><meta name="keywords" content="后端,学习,Java"><meta name="author" content="realyoume"><meta name="copyright" content="realyoume"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="[2023年6月3日] 项目结构每个模块都相当于一个小项目 1xuecheng-plus-parent  所有模块的父模块，主要用于版本管理 通过 dependencyManagement 锁定项目依赖的版本 1xuecheng-plus-base  包含一些通用的代码 其他模块通过 maven 引入 1xuecheng-plus-content  具体的功能模块 MybatisPlus可以根据数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目实战">
+<meta property="og:url" content="http://realyoume.github.io/2023/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="realyoume">
+<meta property="og:description" content="[2023年6月3日] 项目结构每个模块都相当于一个小项目 1xuecheng-plus-parent  所有模块的父模块，主要用于版本管理 通过 dependencyManagement 锁定项目依赖的版本 1xuecheng-plus-base  包含一些通用的代码 其他模块通过 maven 引入 1xuecheng-plus-content  具体的功能模块 MybatisPlus可以根据数">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg">
+<meta property="article:published_time" content="2023-06-03T07:14:00.000Z">
+<meta property="article:modified_time" content="2024-01-08T14:24:49.216Z">
+<meta property="article:author" content="realyoume">
+<meta property="article:tag" content="后端">
+<meta property="article:tag" content="学习">
+<meta property="article:tag" content="Java">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg"><link rel="shortcut icon" href="/pic/favicon.png"><link rel="canonical" href="http://realyoume.github.io/2023/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E9%A1%B9%E7%9B%AE%E5%AE%9E%E6%88%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":600},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '项目实战',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-08 22:24:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/pic/avatar.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">76</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">53</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">realyoume</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">项目实战</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-06-03T07:14:00.000Z" title="发表于 2023-06-03 15:14:00">2023-06-03</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-08T14:24:49.216Z" title="更新于 2024-01-08 22:24:49">2024-01-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">7.8k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>30分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="项目实战"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><p>[2023年6月3日]</p>
+<h1 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h1><p>每个模块都相当于一个小项目</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xuecheng-plus-parent</span><br></pre></td></tr></table></figure>
+
+<p>所有模块的父模块，主要用于版本管理</p>
+<p>通过 dependencyManagement 锁定项目依赖的版本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xuecheng-plus-base</span><br></pre></td></tr></table></figure>
+
+<p>包含一些通用的代码</p>
+<p>其他模块通过 maven 引入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xuecheng-plus-content</span><br></pre></td></tr></table></figure>
+
+<p>具体的功能模块</p>
+<h1 id="MybatisPlus"><a href="#MybatisPlus" class="headerlink" title="MybatisPlus"></a>MybatisPlus</h1><p>可以根据数据库结构生成实体类，持久层，业务层，接口层代码</p>
+<h2 id="分页查询"><a href="#分页查询" class="headerlink" title="分页查询"></a><strong>分页查询</strong></h2><p><strong>配置类</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="meta">@MapperScan(&quot;com.xuecheng.content.mapper&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MybatisPlusConfig</span> &#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义分页拦截器</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> MybatisPlusInterceptor <span class="title function_">mybatisPlusInterceptor</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">MybatisPlusInterceptor</span> <span class="variable">interceptor</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">MybatisPlusInterceptor</span>();</span><br><span class="line">        interceptor.addInnerInterceptor(<span class="keyword">new</span> <span class="title class_">PaginationInnerInterceptor</span>(DbType.MYSQL));</span><br><span class="line">        <span class="keyword">return</span> interceptor;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>通过条件和分页参数进行查询</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Page&lt;CourseBase&gt; pageResult = courseBaseMapper.selectPage(page, queryWrapper);</span><br></pre></td></tr></table></figure>
+
+<h2 id="占位符"><a href="#占位符" class="headerlink" title="占位符"></a>占位符</h2><p>#{} 占位符，可以防止 sql 注入</p>
+<p>${} 动态拼接字符串，会导致 sql 注入</p>
+<h1 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h1><p>用于编写接口文档</p>
+<p>可以读取代码生成文档，并直接测试</p>
+<h1 id="数据字典表"><a href="#数据字典表" class="headerlink" title="数据字典表"></a>数据字典表</h1><p>用于定义状态与状态码之间的映射关系</p>
+<p>方便之后的修改和维护</p>
+<h1 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h1><p>每写一个类就要有一个单元测试</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring Boot 集成 Junit --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-test<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">scope</span>&gt;</span>test<span class="tag">&lt;/<span class="name">scope</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line">@SpringBootTest</span><br><span class="line">public class exampleTest&#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    ExampleObject exampleObject;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void test1() &#123;</span><br><span class="line">            // do something</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="HttpClient"><a href="#HttpClient" class="headerlink" title="HttpClient"></a>HttpClient</h1><p>IDEA 自带的插件，可以方便的发送请求测试接口</p>
+<p>请求数据用文件保存，可以与项目文件同时存储</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">POST &#123;&#123;content_host&#125;&#125;/content/course/list?pageNo=1&amp;pageSize=2</span><br><span class="line">Content-Type: application/json</span><br><span class="line"></span><br><span class="line">&#123;</span><br><span class="line">  &quot;auditStatus&quot;: &quot;202004&quot;,</span><br><span class="line">  &quot;courseName&quot;: &quot;java&quot;,</span><br><span class="line">  &quot;publishStatus&quot;: &quot;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><p>浏览器的安全机制，同源策略</p>
+<p>服务端允许跨域</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">GlobalCorsConfig</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="keyword">public</span> CorsFilter <span class="title function_">corsFilter</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">CorsConfiguration</span> <span class="variable">config</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">CorsConfiguration</span>();</span><br><span class="line">        <span class="comment">//允许白名单域名进行跨域调用</span></span><br><span class="line">        config.addAllowedOrigin(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">        <span class="comment">//允许跨越发送cookie</span></span><br><span class="line">        config.setAllowCredentials(<span class="literal">true</span>);</span><br><span class="line">        <span class="comment">//放行全部原始头信息</span></span><br><span class="line">        config.addAllowedHeader(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">        <span class="comment">//允许所有请求方法跨域调用</span></span><br><span class="line">        config.addAllowedMethod(<span class="string">&quot;*&quot;</span>);</span><br><span class="line">        <span class="type">UrlBasedCorsConfigurationSource</span> <span class="variable">source</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UrlBasedCorsConfigurationSource</span>();</span><br><span class="line">        source.registerCorsConfiguration(<span class="string">&quot;/**&quot;</span>, config);</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">CorsFilter</span>(source);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="树形结构"><a href="#树形结构" class="headerlink" title="树形结构"></a>树形结构</h1><p>关键参数</p>
+<p>id parentid</p>
+<p>递归查询语句</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> <span class="keyword">recursive</span> t1 <span class="keyword">as</span> (</span><br><span class="line">    <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> course_category  <span class="keyword">where</span> id <span class="operator">=</span> <span class="string">&#x27;1&#x27;</span></span><br><span class="line">    <span class="keyword">union</span> <span class="keyword">all</span></span><br><span class="line">    <span class="keyword">select</span> t2.<span class="operator">*</span> <span class="keyword">from</span> course_category  t2 <span class="keyword">inner</span> <span class="keyword">join</span> t1 <span class="keyword">on</span> t1.id <span class="operator">=</span> t2.parentid</span><br><span class="line">)</span><br><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> t1</span><br></pre></td></tr></table></figure>
+
+<h1 id="list-2-map"><a href="#list-2-map" class="headerlink" title="list 2 map"></a>list 2 map</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, CourseCategoryTreeDto&gt; categoryMap = courseCategorys.stream().filter(item -&gt; !id.equals(item.getId())).collect(Collectors.toMap(key -&gt; key.getId(), value -&gt; value, (key1, key2) -&gt; key2));</span><br></pre></td></tr></table></figure>
+
+<h1 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h1><ol>
+<li>参数合法性校验</li>
+<li>@Transactional</li>
+</ol>
+<h1 id="Beanutils-copyProperties"><a href="#Beanutils-copyProperties" class="headerlink" title="Beanutils.copyProperties"></a>Beanutils.copyProperties</h1><p>拷贝属性名相同的属性</p>
+<p>注意源和目标</p>
+<h1 id="统一异常处理"><a href="#统一异常处理" class="headerlink" title="统一异常处理"></a>统一异常处理</h1><p>@ControllerAdvice</p>
+<p>@ExeceptionHandler</p>
+<p>自定义异常类型</p>
+<p>业务代码抛出异常</p>
+<p>异常处理类捕获异常</p>
+<p>返回前端异常返回类</p>
+<h1 id="参数校验"><a href="#参数校验" class="headerlink" title="参数校验"></a>参数校验</h1><p>JSR 303 校验</p>
+<p>@RequestBody @Validated</p>
+<p>开启对对象的参数校验</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotEmpty(message = &quot;适用人群不能为空&quot;)</span></span><br><span class="line"><span class="meta">@Size(message = &quot;适用人群内容过少&quot;,min = 10)</span></span><br><span class="line"><span class="keyword">private</span> String users;</span><br></pre></td></tr></table></figure>
+
+<p>当参数非法时，会报出 MethodArgumentNotValidException 错误，并携带信息</p>
+<p>可以通过统一异常处理进行管理，将报错返回给前端</p>
+<p><strong>分组</strong></p>
+<p>参数校验可以分组进行</p>
+<p>同一个对象在不同情况下使用不同的校验规则</p>
+<p>可以通过 groups 属性来配置</p>
+<h2 id="服务发现"><a href="#服务发现" class="headerlink" title="服务发现"></a>服务发现</h2><p><strong>引入服务发现依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    nacos 服务发现--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>配置nacos地址</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">content-api</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">192.168</span><span class="number">.200</span><span class="number">.200</span><span class="string">:8848</span></span><br><span class="line">      <span class="attr">discovery:</span></span><br><span class="line">        <span class="attr">namespace:</span> <span class="string">dev</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">xuecheng-plus-project</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置管理"><a href="#配置管理" class="headerlink" title="配置管理"></a>配置管理</h2><p><strong>引入依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--    nacos 配置管理--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-config<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>配置文件信息</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">application:</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">content-api</span></span><br><span class="line">  <span class="attr">profiles:</span></span><br><span class="line">    <span class="attr">active:</span> <span class="string">dev</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">server-addr:</span> <span class="number">192.168</span><span class="number">.200</span><span class="number">.200</span><span class="string">:8848</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">              <span class="attr">namespace:</span> <span class="string">dev</span></span><br><span class="line">        <span class="attr">group:</span> <span class="string">xuecheng-plus-project</span></span><br><span class="line">        <span class="attr">file-extension:</span> <span class="string">yaml</span></span><br><span class="line">        <span class="attr">refresh-enabled:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>bootstrap.yml 仅包含可以连接到 nacos 的基本信息</p>
+<p>对应文件 content-api-dev.yaml</p>
+<p>namespace: dev</p>
+<p>group: xuecheng-plus-project</p>
+<p>启动一个客户端，定期与 nacos 通信获得最新配置</p>
+<h2 id="extension-configs"><a href="#extension-configs" class="headerlink" title="extension-configs"></a>extension-configs</h2><p>扩展配置文件，拿到其他的配置文件</p>
+<h2 id="shared-configs"><a href="#shared-configs" class="headerlink" title="shared-configs"></a>shared-configs</h2><p>将公共的配置信息（如数据库连接，日志记录）抽取出来，其他文件通过共享的方式引入</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">shared-configs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">data-id:</span> <span class="string">swagger-$&#123;spring.profiles.active&#125;.yaml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xuecheng-plus-common</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">true</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">data-id:</span> <span class="string">logging-$&#123;spring.profiles.active&#125;.yaml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xuecheng-plus-common</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="配置优先级"><a href="#配置优先级" class="headerlink" title="配置优先级"></a>配置优先级</h2><ol>
+<li>项目应用名配置文件</li>
+<li>扩展配置文件</li>
+<li>共享配置文件</li>
+<li>本地配置文件</li>
+</ol>
+<p>spring.cloud.nacos.config.override-none 本地最优先</p>
+<h1 id="Gateway"><a href="#Gateway" class="headerlink" title="Gateway"></a>Gateway</h1><p><strong>引入依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-gateway<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>配置信息</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">gateway:</span></span><br><span class="line"><span class="comment">#      filter:</span></span><br><span class="line"><span class="comment">#        strip-prefix:</span></span><br><span class="line"><span class="comment">#          enabled: true</span></span><br><span class="line">      <span class="attr">routes:</span> <span class="comment"># 网关路由配置</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">content-api</span> <span class="comment"># 路由id，自定义，只要唯一即可</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081 # 路由的目标地址 http就是固定地址</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://content-api</span> <span class="comment"># 路由的目标地址 lb就是负载均衡，后面跟服务名称</span></span><br><span class="line">          <span class="attr">predicates:</span> <span class="comment"># 路由断言，也就是判断请求是否符合路由规则的条件</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/content/**</span> <span class="comment"># 这个是按照路径匹配，只要以/content/开头就符合要求</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">system-api</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://system-api</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/system/**</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">media-api</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://media-api</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/media/**</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">search-service</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://search</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/search/**</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">auth-service</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://auth-service</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/auth/**</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">checkcode</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://checkcode</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/checkcode/**</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">learning-api</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://learning-api</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/learning/**</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br><span class="line">        <span class="bullet">-</span> <span class="attr">id:</span> <span class="string">orders-api</span></span><br><span class="line">          <span class="comment"># uri: http://127.0.0.1:8081</span></span><br><span class="line">          <span class="attr">uri:</span> <span class="string">lb://orders-api</span></span><br><span class="line">          <span class="attr">predicates:</span></span><br><span class="line">            <span class="bullet">-</span> <span class="string">Path=/orders/**</span></span><br><span class="line"><span class="comment">#          filters:</span></span><br><span class="line"><span class="comment">#            - StripPrefix=1</span></span><br></pre></td></tr></table></figure>
+
+<p>配置路径以及转发路径信息</p>
+<p>因为使用了 nacos，可以使用服务名代替地址，并进行负载均衡</p>
+<h1 id="MinIO"><a href="#MinIO" class="headerlink" title="MinIO"></a>MinIO</h1><p>分布式文件系统</p>
+<p>支持丢失恢复</p>
+<p>用于存储媒体文件（图片、视频等）</p>
+<h2 id="Docker启动MinIO"><a href="#Docker启动MinIO" class="headerlink" title="Docker启动MinIO"></a>Docker启动MinIO</h2><p>拉取镜像</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull minio/minio</span><br></pre></td></tr></table></figure>
+
+<p>启动</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">  -p 9000:9000 \</span><br><span class="line">  -p 9001:9001 \</span><br><span class="line">  --name minio1 \</span><br><span class="line">  -v /home/minio/data:/data \</span><br><span class="line">  -e <span class="string">&quot;MINIO_ROOT_USER=minio&quot;</span> \</span><br><span class="line">  -e <span class="string">&quot;MINIO_ROOT_PASSWORD=miniominio&quot;</span> \</span><br><span class="line">  minio/minio server /data --console-address <span class="string">&quot;:9001&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Java操作Minio"><a href="#Java操作Minio" class="headerlink" title="Java操作Minio"></a>Java操作Minio</h2><p><strong>引入依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.minio<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>minio<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.4.3<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.squareup.okhttp3<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>okhttp<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>4.8.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>简单的上传</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">MinioClient</span> <span class="variable">minioClient</span> <span class="operator">=</span></span><br><span class="line">        MinioClient.builder()</span><br><span class="line">                .endpoint(<span class="string">&quot;http://192.168.200.200:9000&quot;</span>)</span><br><span class="line">                .credentials(<span class="string">&quot;minio&quot;</span>, <span class="string">&quot;miniominio&quot;</span>)</span><br><span class="line">                .build();</span><br><span class="line">             </span><br><span class="line"><span class="type">UploadObjectArgs</span> <span class="variable">uploadObjectArgs</span> <span class="operator">=</span> UploadObjectArgs.builder()</span><br><span class="line">                .bucket(<span class="string">&quot;testbucket&quot;</span>)<span class="comment">//桶</span></span><br><span class="line">                .filename(<span class="string">&quot;C:\\壁纸.png&quot;</span>) <span class="comment">//指定本地文件路径</span></span><br><span class="line">                .object(<span class="string">&quot;壁纸.png&quot;</span>)<span class="comment">//对象名 放在子目录下</span></span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">minioClient.uploadObject(uploadObjectArgs);</span><br><span class="line">System.out.println(<span class="string">&quot;上传成功&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><strong>md5校验文件</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//校验文件的完整性对文件的内容进行md5</span></span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fileInputStream1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:\\develop\\upload\\1.mp4&quot;</span>));</span><br><span class="line"><span class="type">String</span> <span class="variable">source_md5</span> <span class="operator">=</span> DigestUtils.md5Hex(fileInputStream1);</span><br><span class="line"><span class="type">FileInputStream</span> <span class="variable">fileInputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;D:\\develop\\upload\\1a.mp4&quot;</span>));</span><br><span class="line"><span class="type">String</span> <span class="variable">local_md5</span> <span class="operator">=</span> DigestUtils.md5Hex(fileInputStream);</span><br><span class="line"><span class="keyword">if</span>(source_md5.equals(local_md5))&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;下载成功&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="接口实现"><a href="#接口实现" class="headerlink" title="接口实现"></a>接口实现</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RequestMapping(value = &quot;/upload/coursefile&quot;,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</span></span><br><span class="line"><span class="keyword">public</span> UploadFileResultDto <span class="title function_">upload</span><span class="params">(<span class="meta">@RequestPart(&quot;filedata&quot;)</span>MultipartFile filedata)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Transactional"><a href="#Transactional" class="headerlink" title="@Transactional"></a>@Transactional</h1><p>事务</p>
+<p>如果方法中有网络访问，造成数据库长时间连接，性能下降</p>
+<p>非事务方法调用事务方法，事务无法控制</p>
+<p>涉及到代理对象和原对象</p>
+<p>在原对象中注入代理对象，调用被加强的（有事务控制）的方法</p>
+<h2 id="Spring-事务失效"><a href="#Spring-事务失效" class="headerlink" title="Spring 事务失效"></a>Spring 事务失效</h2><ol>
+<li>在方法中捕获异常，没有抛出</li>
+<li>使用非代理对象调用方法</li>
+<li>标记的方法不是 public</li>
+<li>抛出的异常与 rollbackFor 指定的异常不匹配</li>
+<li>数据库不支持事务</li>
+<li>Spring 传播行为导致事务失败</li>
+</ol>
+<h1 id="视频上传"><a href="#视频上传" class="headerlink" title="视频上传"></a>视频上传</h1><h2 id="断点续传"><a href="#断点续传" class="headerlink" title="断点续传"></a>断点续传</h2><p>大文件</p>
+<p>上传和下载</p>
+<h2 id="合并分块"><a href="#合并分块" class="headerlink" title="合并分块"></a>合并分块</h2><p>已上传到Minio的分块，通过api调用在远端合并</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//        List&lt;ComposeSource&gt; sources = new ArrayList&lt;&gt;();</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//        for (int i = 0; i &lt; 30; i++) &#123;</span></span><br><span class="line"><span class="comment">//            ComposeSource composeSource = ComposeSource.builder().bucket(&quot;testbucket&quot;).object(&quot;chunk/&quot; + i).build();</span></span><br><span class="line"><span class="comment">//            sources.add(composeSource);</span></span><br><span class="line"><span class="comment">//        &#125;</span></span><br><span class="line"></span><br><span class="line">List&lt;ComposeSource&gt; sources = Stream.iterate(<span class="number">0</span>, i -&gt; ++i).limit(<span class="number">30</span>).map(i -&gt; ComposeSource.builder().bucket(<span class="string">&quot;testbucket&quot;</span>).object(<span class="string">&quot;chunk/&quot;</span> + i).build()).collect(Collectors.toList());</span><br><span class="line"></span><br><span class="line"><span class="type">ComposeObjectArgs</span> <span class="variable">composeObjectArgs</span> <span class="operator">=</span> ComposeObjectArgs.builder()</span><br><span class="line">                .bucket(<span class="string">&quot;testbucker&quot;</span>)</span><br><span class="line">                .object(<span class="string">&quot;merge.mp4&quot;</span>)</span><br><span class="line">                .sources(sources)</span><br><span class="line">                .build();</span><br><span class="line"></span><br><span class="line">minioClient.composeObject(composeObjectArgs);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>检查文件是否存在接口</li>
+<li>检查分块是否存在接口</li>
+<li>上传分块接口</li>
+<li>合并分块接口</li>
+</ul>
+<p>Spring Boot工程嵌入的tomcat限制了请求的文件大小</p>
+<p>修改配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">servlet:</span></span><br><span class="line">    <span class="attr">multipart:</span></span><br><span class="line">      <span class="attr">max-file-size:</span> <span class="string">10MB</span></span><br><span class="line">      <span class="attr">max-request-size:</span> <span class="string">100MB</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="删除分块"><a href="#删除分块" class="headerlink" title="删除分块"></a>删除分块</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">Iterable&lt;DeleteObject&gt; objects =  Stream.iterate(<span class="number">0</span>, i -&gt; ++i).limit(chunkTotal).map(i -&gt; <span class="keyword">new</span> <span class="title class_">DeleteObject</span>(chunkFileFolderPath+ i)).collect(Collectors.toList());</span><br><span class="line"><span class="type">RemoveObjectsArgs</span> <span class="variable">removeObjectsArgs</span> <span class="operator">=</span> RemoveObjectsArgs.builder().bucket(bucket_video).objects(objects).build();</span><br><span class="line">Iterable&lt;Result&lt;DeleteError&gt;&gt; results = minioClient.removeObjects(removeObjectsArgs);</span><br><span class="line"><span class="comment">//要想真正删除</span></span><br><span class="line">results.forEach(f-&gt;&#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="type">DeleteError</span> <span class="variable">deleteError</span> <span class="operator">=</span> f.get();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="视频转码"><a href="#视频转码" class="headerlink" title="视频转码"></a>视频转码</h1><p><strong>编码格式</strong></p>
+<p>H.264 ACC</p>
+<p><strong>文件格式</strong></p>
+<p>mp4</p>
+<h2 id="FFmpeg"><a href="#FFmpeg" class="headerlink" title="FFmpeg"></a>FFmpeg</h2><p>开源的视频转码软件</p>
+<p>通常情况下会封装成工具类供 Java 代码调用</p>
+<p>Java ProcessBuilder 用于创建操作系统进程，通过此类可以编辑指令并调用 FFmpeg</p>
+<h1 id="分布式任务调度"><a href="#分布式任务调度" class="headerlink" title="分布式任务调度"></a>分布式任务调度</h1><p>任务调度顾名思义，就是对任务的调度，它是指系统为了完成特定业务，基于给定时间点，给定时间间隔或者给定执行次数自动执行任务。</p>
+<p>通常任务调度的程序是集成在应用中的，比如:优惠卷服务中包括了定时发放优惠卷的的调度程序，结算服务中包括了定期生成报表的任务调度程序，由于采用分布式架构，一个服务往往会部署多个冗余实例来运行我们的业务，在这种分布式系统环境下运行任务调度，我们称之为分布式任务调度。</p>
+<p><strong>目标</strong></p>
+<ol>
+<li>并行任务调度</li>
+<li>高可用</li>
+<li>弹性扩容</li>
+<li>任务管理与监测</li>
+<li>避免任务重复执行</li>
+</ol>
+<h2 id="XXL-JOB"><a href="#XXL-JOB" class="headerlink" title="XXL-JOB"></a>XXL-JOB</h2><p>XXL-JOB是一个轻量级分布式任务调度平台，其核心设计目标是开发迅速、学习简单、轻量级、易扩展。现已开放源代码并接入多家公司线上产品线，开箱即用。</p>
+<h3 id="配置并绑定执行器"><a href="#配置并绑定执行器" class="headerlink" title="配置并绑定执行器"></a>配置并绑定执行器</h3><p>1. </p>
+<p>创建执行器</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202307122159890.png" alt="img"></p>
+<p>1. </p>
+<p>添加依赖</p>
+<p>media-service</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.xuxueli<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>xxl-job-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>配置信息</p>
+<p>media-service</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">xxl:</span></span><br><span class="line">  <span class="attr">job:</span></span><br><span class="line">    <span class="attr">admin:</span> </span><br><span class="line">      <span class="attr">addresses:</span> <span class="string">http://192.168.101.65:8088/xxl-job-admin</span></span><br><span class="line">    <span class="attr">executor:</span></span><br><span class="line">      <span class="attr">appname:</span> <span class="string">testHandler</span></span><br><span class="line">      <span class="attr">address:</span> </span><br><span class="line">      <span class="attr">ip:</span> </span><br><span class="line">      <span class="attr">port:</span> <span class="number">9999</span></span><br><span class="line">      <span class="attr">logpath:</span> <span class="string">/data/applogs/xxl-job/jobhandler</span></span><br><span class="line">      <span class="attr">logretentiondays:</span> <span class="number">30</span></span><br><span class="line">    <span class="attr">accessToken:</span> <span class="string">default_token</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>添加 XxlJobConfig </p>
+<h3 id="执行任务"><a href="#执行任务" class="headerlink" title="执行任务"></a>执行任务</h3><p>1. </p>
+<p>绑定任务方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@XxlJob(&quot;demoJobHandler&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">demoJobHandler</span><span class="params">()</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;处理视频.......&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>新建任务</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202307122159980.png" alt="img"></p>
+<p>可以通过 cron 配置复杂的调度策略</p>
+<p>指定任务名称，以及响应的执行器</p>
+<h4 id="高级配置"><a href="#高级配置" class="headerlink" title="高级配置"></a>高级配置</h4><p>分片广播：执行器集群部署时，任务路由策略选择”分片广播”情况下，一次任务调度将会广播触发集群中所有执行器执行一次任务，可根据分片参数开发分片任务</p>
+<p>调度过期策略：调度中心错过调度时间的补偿处理策略，包括：忽略、立即补偿触发一次等；</p>
+<p>阻塞处理策略：调度过于密集执行器来不及处理时的处理策略，策略包括：单机串行（默认）、丢弃后续调度、覆盖之前调度；</p>
+<h3 id="分布式锁"><a href="#分布式锁" class="headerlink" title="分布式锁"></a>分布式锁</h3><p>分布式锁，是控制分布式系统之间同步访问共享资源的一种方式。在分布式系统中，常常需要协调他们的动作。如果不同的系统或是同一个系统的不同主机之间共享了一个或一组资源，那么访问这些资源的时候，往往需要互斥来防止彼此干扰来保证一致性，在这种情况下，便需要使用到分布式锁。</p>
+<h4 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h4><ol>
+<li>基于数据库</li>
+<li>基于 redis</li>
+<li>基于 zookeeper</li>
+</ol>
+<p>基于数据库和乐观锁思想</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Update(&quot;update media_process m set m.status=&#x27;4&#x27; where (m.status=&#x27;1&#x27; or m.status=&#x27;3&#x27;) and m.fail_count&lt;3 and m.id=#&#123;id&#125;&quot;)</span></span><br><span class="line"><span class="type">int</span> <span class="title function_">startTask</span><span class="params">(<span class="meta">@Param(&quot;id&quot;)</span> <span class="type">long</span> id)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>能够成功执行的线程得到锁</p>
+<h3 id="CountDownLacth"><a href="#CountDownLacth" class="headerlink" title="CountDownLacth"></a>CountDownLacth</h3><p>与线程池配合使用，阻塞主线程，等所有线程池中线程结束后放行</p>
+<h1 id="视频上传与处理实现"><a href="#视频上传与处理实现" class="headerlink" title="视频上传与处理实现"></a>视频上传与处理实现</h1><p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202307122202502.png" alt="img"></p>
+<h1 id="FreeMarker"><a href="#FreeMarker" class="headerlink" title="FreeMarker"></a>FreeMarker</h1><p>FreeMarker 是一款 模板引擎： 即一种基于模板和要改变的数据， 并用来生成输出文本(HTML网页，电子邮件，配置文件，源代码等)的通用工具。 它不是面向最终用户的，而是一个Java类库，是一款程序员可以嵌入他们所开发产品的组件。</p>
+<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><p>1. </p>
+<p>引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter-freemarker<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>配置文件</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">freemarker:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">cache:</span> <span class="literal">false</span>   <span class="comment">#关闭模板缓存，方便测试</span></span><br><span class="line">    <span class="attr">settings:</span></span><br><span class="line">      <span class="attr">template_update_delay:</span> <span class="number">0</span></span><br><span class="line">    <span class="attr">suffix:</span> <span class="string">.ftl</span>   <span class="comment">#页面模板后缀名</span></span><br><span class="line">    <span class="attr">charset:</span> <span class="string">UTF-8</span></span><br><span class="line">    <span class="attr">template-loader-path:</span> <span class="string">classpath:/templates/</span>   <span class="comment">#页面模板位置(默认为 classpath:/templates/)</span></span><br><span class="line">    <span class="attr">resources:</span></span><br><span class="line">      <span class="attr">add-mappings:</span> <span class="literal">false</span>   <span class="comment">#关闭项目中的静态资源映射(static、resources文件夹下的资源)</span></span><br></pre></td></tr></table></figure>
+
+<p>引入配置</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">      <span class="attr">config:</span></span><br><span class="line">        <span class="attr">shared-configs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">data-id:</span> <span class="string">freemarker-config-$&#123;spring.profiles.active&#125;.yaml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xuecheng-plus-common</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>示例代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Controller</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">FreemarkerController</span> &#123;</span><br><span class="line">    <span class="meta">@GetMapping(&quot;/testfreemarker&quot;)</span></span><br><span class="line">    <span class="keyword">public</span> ModelAndView <span class="title function_">test</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="type">ModelAndView</span> <span class="variable">modelAndView</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ModelAndView</span>();</span><br><span class="line">        <span class="comment">//指定模型</span></span><br><span class="line">        modelAndView.addObject(<span class="string">&quot;name&quot;</span>,<span class="string">&quot;小明&quot;</span>);</span><br><span class="line">        <span class="comment">//指定模板</span></span><br><span class="line">        modelAndView.setViewName(<span class="string">&quot;test&quot;</span>);<span class="comment">//根据视图名称加.ftl找到模板</span></span><br><span class="line">        <span class="keyword">return</span> modelAndView;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>test.ftl</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;utf-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Hello World!<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">Hello $&#123;name&#125;!</span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="发布课程"><a href="#发布课程" class="headerlink" title="发布课程"></a>发布课程</h1><p>课程发布的流程：</p>
+<ol>
+<li>向内容管理数据库的课程发布表存储课程发布信息，更新课程基本信息表中发布状态为已发布。</li>
+<li>向Redis存储课程缓存信息。</li>
+<li>向Elasticsearch存储课程索引信息。</li>
+<li>请求分布文件系统存储课程静态化页面(即html页面)，实现快速浏览课程详情页面。</li>
+</ol>
+<h2 id="分布式事务"><a href="#分布式事务" class="headerlink" title="分布式事务"></a>分布式事务</h2><p>本地事务：用 spring 来控制事务，基于数据库本身的事务特性来实现，又称数据库事务</p>
+<p>分布式系统会把一个应用系统拆分为可独立部署的多个服务，因此需要服务与服务之间远程协作才能完成事务操作，这种分布式系统环境下由不同的服务之间通过网络远程协作完成事务称之为分布式事务</p>
+<p><strong>CAP 理论</strong></p>
+<p>一致性 可用性 分区容错性</p>
+<p><strong>BASE 理论</strong></p>
+<p>基本可用性 软状态 最终一致性</p>
+<p><strong>实现 CP 就是强一致性</strong></p>
+<ol>
+<li>使用 Seata 框架基于 AT 模式实现</li>
+<li>使用 Seata 框架基于 TCC 模式实现</li>
+</ol>
+<p><strong>实现 AP 就是保证最终一致性</strong></p>
+<ol>
+<li>使用消息队列通知</li>
+<li>使用任务调度通知</li>
+</ol>
+<p><strong>技术选型</strong></p>
+<p>课程的发布包括，存储到数据库，redis，es，minio等</p>
+<p>要保证最终一致性</p>
+<p>采用本地消息表和任务调度的方式来实现分布式事务</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202307122159031.png" alt="img"></p>
+<h2 id="消息处理SDK"><a href="#消息处理SDK" class="headerlink" title="消息处理SDK"></a>消息处理SDK</h2><p>将消息处理的代码抽出为 SDK，方便进行代码复用</p>
+<p>包含了对数据库中消息表的查询，修改操作，便于进行状态的管理</p>
+<h2 id="页面静态化"><a href="#页面静态化" class="headerlink" title="页面静态化"></a>页面静态化</h2><p>静态化就是指把原本动态生成的html页面变为静态内容保存，用户客户端请求的时候，直接返回静态页面，不用再经过服务渲染，不用访问数据库，可以大大的减小数据库的压力，显著的提高性能。</p>
+<p>配合 nginx 服务器使用</p>
+<p>使用场景：页面数据变化频率低的场景。</p>
+<h3 id="使用-freemarker-生成静态-html-页面"><a href="#使用-freemarker-生成静态-html-页面" class="headerlink" title="使用 freemarker 生成静态 html 页面"></a><strong>使用 freemarker 生成静态 html 页面</strong></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Configuration</span> <span class="variable">configuration</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Configuration</span>(Configuration.getVersion());</span><br><span class="line"><span class="comment">//拿到classpath路径</span></span><br><span class="line"><span class="type">String</span> <span class="variable">classpath</span> <span class="operator">=</span> <span class="built_in">this</span>.getClass().getResource(<span class="string">&quot;/&quot;</span>).getPath();</span><br><span class="line"><span class="comment">//指定模板的目录</span></span><br><span class="line">configuration.setDirectoryForTemplateLoading(<span class="keyword">new</span> <span class="title class_">File</span>(classpath+<span class="string">&quot;/templates/&quot;</span>));</span><br><span class="line"><span class="comment">//指定编码</span></span><br><span class="line">configuration.setDefaultEncoding(<span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"><span class="comment">//得到模板</span></span><br><span class="line"><span class="type">Template</span> <span class="variable">template</span> <span class="operator">=</span> configuration.getTemplate(<span class="string">&quot;course_template.ftl&quot;</span>);</span><br><span class="line"><span class="comment">//准备数据</span></span><br><span class="line"><span class="type">CoursePreviewDto</span> <span class="variable">coursePreviewInfo</span> <span class="operator">=</span> coursePublishService.getCoursePreviewInfo(<span class="number">131L</span>);</span><br><span class="line">HashMap&lt;String, Object&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">map.put(<span class="string">&quot;model&quot;</span>,coursePreviewInfo);</span><br><span class="line"><span class="comment">//Template template 模板, Object model 数据</span></span><br><span class="line"><span class="type">String</span> <span class="variable">html</span> <span class="operator">=</span> FreeMarkerTemplateUtils.processTemplateIntoString(template, map);</span><br><span class="line"><span class="comment">//输入流</span></span><br><span class="line"><span class="type">InputStream</span> <span class="variable">inputStream</span> <span class="operator">=</span> IOUtils.toInputStream(html, <span class="string">&quot;utf-8&quot;</span>);</span><br><span class="line"><span class="comment">//输出文件</span></span><br><span class="line"><span class="type">FileOutputStream</span> <span class="variable">outputStream</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\Users\\123\\Desktop\\120.html&quot;</span>));</span><br><span class="line"><span class="comment">//使用流将html写入文件</span></span><br><span class="line">IOUtils.copy(inputStream,outputStream);</span><br></pre></td></tr></table></figure>
+
+<h3 id="调用媒资微服务上传文件"><a href="#调用媒资微服务上传文件" class="headerlink" title="调用媒资微服务上传文件"></a>调用媒资微服务上传文件</h3><p>1. </p>
+<p>引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Spring Cloud 微服务发现 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.alibaba.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-alibaba-nacos-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- Spring Cloud 微服务远程调用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-openfeign<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.openfeign<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>feign-httpclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--feign支持Multipart格式传参--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.openfeign.form<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>feign-form<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.github.openfeign.form<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>feign-form-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.8.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>配置信息</p>
+<p><strong>feign-dev.yaml</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 开启熔断降级</span></span><br><span class="line"><span class="attr">feign:</span></span><br><span class="line">  <span class="attr">hystrix:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">circuitbreaker:</span></span><br><span class="line">    <span class="attr">enabled:</span> <span class="literal">true</span></span><br><span class="line"><span class="attr">hystrix:</span></span><br><span class="line">  <span class="attr">command:</span></span><br><span class="line">    <span class="attr">default:</span></span><br><span class="line">      <span class="attr">execution:</span></span><br><span class="line">        <span class="attr">isolation:</span></span><br><span class="line">          <span class="attr">thread:</span></span><br><span class="line">            <span class="attr">timeoutInMilliseconds:</span> <span class="number">30000</span>  <span class="comment">#熔断超时时间</span></span><br><span class="line"><span class="attr">ribbon:</span></span><br><span class="line">  <span class="attr">ConnectTimeout:</span> <span class="number">60000</span> <span class="comment">#连接超时时间</span></span><br><span class="line">  <span class="attr">ReadTimeout:</span> <span class="number">60000</span> <span class="comment">#读超时时间</span></span><br><span class="line">  <span class="attr">MaxAutoRetries:</span> <span class="number">0</span> <span class="comment">#重试次数</span></span><br><span class="line">  <span class="attr">MaxAutoRetriesNextServer:</span> <span class="number">1</span> <span class="comment">#切换实例的重试次数</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>依赖公共配置文件</strong></p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">spring:</span></span><br><span class="line">  <span class="attr">cloud:</span></span><br><span class="line">    <span class="attr">nacos:</span></span><br><span class="line">       <span class="attr">shared-configs:</span></span><br><span class="line">          <span class="bullet">-</span> <span class="attr">data-id:</span> <span class="string">feign-$&#123;spring.profiles.active&#125;.yaml</span></span><br><span class="line">            <span class="attr">group:</span> <span class="string">xuecheng-plus-common</span></span><br><span class="line">            <span class="attr">refresh:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>编写接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;media-api&quot;,configuration = &#123;MultipartSupportConfig.class&#125;,fallbackFactory = MediaServiceClientFallbackFactory.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">MediaServiceClient</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@RequestMapping(value = &quot;/media/upload/coursefile&quot;,consumes = MediaType.MULTIPART_FORM_DATA_VALUE)</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">upload</span><span class="params">(<span class="meta">@RequestPart(&quot;filedata&quot;)</span> MultipartFile filedata,</span></span><br><span class="line"><span class="params">                                      <span class="meta">@RequestParam(value= &quot;objectName&quot;,required=false)</span> String objectName)</span> <span class="keyword">throws</span> IOException;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="熔断降级"><a href="#熔断降级" class="headerlink" title="熔断降级"></a>熔断降级</h3><p>使用 hystrix 框架</p>
+<p><strong>指定 FallBack 实现接口</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;media-api&quot;,configuration = &#123;MultipartSupportConfig.class&#125;,fallback = MediaServiceClientFallback.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MediaServiceClientFallback</span> <span class="keyword">implements</span> <span class="title class_">MediaServiceClient</span>&#123;</span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> String <span class="title function_">upload</span><span class="params">(MultipartFile filedata, String objectName)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"> <span class="comment">// 降级后执行的方法</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>指定 FallBackFactory</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FeignClient(value = &quot;media-api&quot;,configuration = &#123;MultipartSupportConfig.class&#125;,fallbackFactory = MediaServiceClientFallbackFactory.class)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">MediaServiceClientFallbackFactory</span> <span class="keyword">implements</span> <span class="title class_">FallbackFactory</span>&lt;MediaServiceClient&gt; &#123;</span><br><span class="line"> <span class="comment">//拿到了熔断的异常信息throwable</span></span><br><span class="line"> <span class="meta">@Override</span></span><br><span class="line"> <span class="keyword">public</span> MediaServiceClient <span class="title function_">create</span><span class="params">(Throwable throwable)</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">MediaServiceClient</span>() &#123;</span><br><span class="line">   <span class="comment">//发生熔断上传服务调用此方法执行降级逻辑</span></span><br><span class="line">   <span class="meta">@Override</span></span><br><span class="line">   <span class="keyword">public</span> String <span class="title function_">upload</span><span class="params">(MultipartFile filedata, String objectName)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">     log.debug(<span class="string">&quot;远程调用上传文件的接口发生熔断:&#123;&#125;&quot;</span>,throwable.toString(),throwable);</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">   &#125;</span><br><span class="line">  &#125;;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="课程搜索"><a href="#课程搜索" class="headerlink" title="课程搜索"></a>课程搜索</h2><p>全文检索形式，采用 elasticsearch 实现</p>
+<p>涉及到数据的同步问题，解决方案有canal，消息队列等</p>
+<h1 id="用户认证"><a href="#用户认证" class="headerlink" title="用户认证"></a>用户认证</h1><p>认证：你是谁</p>
+<p>授权：你有没有权限</p>
+<p>单点登录：在多个应用系统中，用户只需要登录一次，即可访问所有相互信任的应用系统</p>
+<h2 id="集成Spring-Security"><a href="#集成Spring-Security" class="headerlink" title="集成Spring Security"></a>集成Spring Security</h2><p>1. </p>
+<p>引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-oauth2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>创建相应的数据库表</p>
+<p>1. </p>
+<p>使用注解进行配置</p>
+<h2 id="OAuth2"><a href="#OAuth2" class="headerlink" title="OAuth2"></a>OAuth2</h2><p>OAuth 2.0是一个业界标准的授权协议，其定义了四种可以适用于各种应用场景的授权交互模式：授权码模式、应用授信模式、用户授信模式、简化模式。其中，授权码模式被广泛应用于第三方互联网开放平台，通过第三方登录是其最常见应用场景之一，比如使用微信、QQ和淘宝账号进行登录。</p>
+<p>JWT 可以实现无状态认证</p>
+<p>头部、载荷、签名 xxxx.yyyy.zzzz</p>
+<p>JWT 的安全性取决于密钥的安全性</p>
+<p>JWT 的缺点是长度太长</p>
+<h2 id="管理微服务访问"><a href="#管理微服务访问" class="headerlink" title="管理微服务访问"></a>管理微服务访问</h2><p>1. </p>
+<p>引入依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--认证相关--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-security<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-oauth2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>配置 TokenConfig 和 ResouceServerConfig</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">configure</span><span class="params">(HttpSecurity http)</span> <span class="keyword">throws</span> Exception &#123;</span><br><span class="line"> http.csrf().disable()</span><br><span class="line">         .authorizeRequests()</span><br><span class="line">          .antMatchers(<span class="string">&quot;/r/**&quot;</span>,<span class="string">&quot;/course/**&quot;</span>).authenticated()<span class="comment">//所有/r/**的请求必须认证通过</span></span><br><span class="line">         .anyRequest().permitAll()</span><br><span class="line"> ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置要管理的请求路径</p>
+<p>1. </p>
+<p>开启服务后，在请求头中携带 <em>Authorization</em> 才能通过验证</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">GET &#123;&#123;content_host&#125;&#125;/content/course/<span class="number">2</span></span><br><span class="line">Authorization: bearer yourtoken</span><br></pre></td></tr></table></figure>
+
+<p>1. </p>
+<p>在上下文中得到信息</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Object</span> <span class="variable">principal</span> <span class="operator">=</span> SecurityContextHolder.getContext().getAuthentication().getPrincipal();</span><br></pre></td></tr></table></figure>
+
+<h2 id="网关"><a href="#网关" class="headerlink" title="网关"></a>网关</h2><ol>
+<li>路由转发</li>
+<li>统一认证</li>
+</ol>
+<p>将所有的认证操作放在网关执行</p>
+<p>授权操作在各自的微服务判断</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202307122159306.png" alt="img"></p>
+<h2 id="实现统一登录"><a href="#实现统一登录" class="headerlink" title="实现统一登录"></a>实现统一登录</h2><p><strong>自定义 UserDetailService</strong></p>
+<p>实现 loadUserByUsername 方法，查询用户密码，返回 UserDetail 对象</p>
+<p>该方法由 Spring Security 框架自动调用</p>
+<p><strong>BCryptPasswordEncoder</strong></p>
+<p>官方推荐方式</p>
+<p>每次生成的密码都不一样，但可以比对</p>
+<p>采用SHA-256 +随机盐+密钥对密码进行加密</p>
+<p><strong>扩展用户信息</strong></p>
+<p>将信息对象转为 JSON，存入 username 中</p>
+<p>其余微服务可以用上下文的方式拿到该 JSON 串</p>
+<p>自定义工具类，解析 JSON 串返回对象</p>
+<p><strong>重写 DaoAuthenticationProvide</strong></p>
+<p>存在多种验证方式，不只有密码方式</p>
+<p><strong>策略模式</strong></p>
+<p>一个验证接口，多种策略实现方式</p>
+<p>根据参数的 type，从 spring 容器中得到对应的 bean</p>
+<p>后续新增验证方式增加策略的实现类即可</p>
+<p><strong>验证码</strong></p>
+<p>验证码可以防止恶性攻击</p>
+<p>独立部署的一个微服务</p>
+<p>生成 key 和图片</p>
+<p>Redis 存储 key value</p>
+<p>拿到用户输入进行比对</p>
+<p><strong>使用Feign远程调用</strong></p>
+<ol>
+<li>引入 feign 和 okhttp 的依赖</li>
+<li>创建 FeignClient 接口，复制接口方法参数，指定服务名，路径</li>
+<li>配置降级策略，FallBackFactory 类</li>
+<li>启动类上添加 EnableFeignClients 注解并配置扫描包</li>
+<li>调用方法</li>
+</ol>
+<h2 id="微信扫码登录"><a href="#微信扫码登录" class="headerlink" title="微信扫码登录"></a>微信扫码登录</h2><p>根据微信的官方文档，使用相应的接口完成开发。</p>
+<p>拿到用户数据后存储到本地，之后登录直接使用</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202307122159163.png" alt="img"></p>
+<h3 id="String-format"><a href="#String-format" class="headerlink" title="String format"></a>String format</h3><p>生成字符串，接收参数替换占位符</p>
+<p>类似C语言的print</p>
+<h3 id="RestTemplate"><a href="#RestTemplate" class="headerlink" title="RestTemplate"></a>RestTemplate</h3><p>远程调用服务，基于http方式</p>
+<p>由nacos管理的服务可以使用feign调用</p>
+<h1 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h1><h2 id="RBAC"><a href="#RBAC" class="headerlink" title="RBAC"></a>RBAC</h2><p>基于角色的访问控制 Role-Based Access Control</p>
+<p>基于资源的访问控制 Resource-Based Access Control</p>
+<p>基于资源的访问控制具有更好的可修改和可扩展性</p>
+<h2 id="权限标识"><a href="#权限标识" class="headerlink" title="权限标识"></a>权限标识</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@PreAuthorize(&quot;hasAuthority(&#x27;xc_teachmanager_course_list&#x27;)&quot;)</span></span><br></pre></td></tr></table></figure>
+
+<p>通过注解在入口方法处标识所需的权限</p>
+<p><img src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202307122202259.png" alt="img"></p>
+<p>数据库中存储权限标识符和对应权限</p>
+<h2 id="鉴权原理"><a href="#鉴权原理" class="headerlink" title="鉴权原理"></a>鉴权原理</h2><p>Jwt 中携带了用户的权限标识符，通过比对进行权限控制</p>
+<p>Jwt 果然体积很大，携带了那么多东西</p>
+<h2 id="数据库结构"><a href="#数据库结构" class="headerlink" title="数据库结构"></a>数据库结构</h2><p>为了便于进行权限管理，定义了这样的表结构</p>
+<p>用户表 – 用户角色表 – 角色表 – 角色权限表 – 权限表</p>
+<h2 id="动态读取权限"><a href="#动态读取权限" class="headerlink" title="动态读取权限"></a>动态读取权限</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">List&lt;XcMenu&gt; xcMenus = xcMenuMapper.selectPermissionByUserId(xcUser.getId());</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(xcMenus.size()&gt;<span class="number">0</span>)&#123;</span><br><span class="line">    List&lt;String&gt; permissions =<span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">    xcMenus.forEach(m-&gt;&#123;</span><br><span class="line">        <span class="comment">//拿到了用户拥有的权限标识符</span></span><br><span class="line">        permissions.add(m.getCode());</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//将permissions转成数组</span></span><br><span class="line">    authorities = permissions.toArray(<span class="keyword">new</span> <span class="title class_">String</span>[<span class="number">0</span>]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="type">UserDetails</span> <span class="variable">userDetails</span> <span class="operator">=</span> User.withUsername(userJson).password(password).authorities(authorities).build();</span><br></pre></td></tr></table></figure>
+
+<h2 id="细粒度授权"><a href="#细粒度授权" class="headerlink" title="细粒度授权"></a>细粒度授权</h2><p>细粒度授权也叫数据范围授权，即不同的用户所拥有的操作权限相同，但是能够操作的数据范围是不一样的。一个例子∶用户A和用户B都是教学机构，他们都拥有“我的课程”权限，但是两个用户所查询到的数据是不一样的。</p>
+<p>通过工具类拿到 jwt 中携带的用户信息</p>
+<p>在业务逻辑层实现根据信息查询不同范围的数据</p>
+<h1 id="选课"><a href="#选课" class="headerlink" title="选课"></a>选课</h1><h2 id="日期格式"><a href="#日期格式" class="headerlink" title="日期格式"></a>日期格式</h2><p>使用feign远程调用时</p>
+<p>出现错误</p>
+<p>java.time.format.DateTimeParseException: Text ‘2023-06-27 15:26:46’ could not be parsed at index 10</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = &quot;yyyy-MM-dd HH:mm:ss&quot;)</span></span><br><span class="line"><span class="keyword">private</span> LocalDateTime createDate;</span><br></pre></td></tr></table></figure>
+
+<p>指定日期类与JSON转化时的格式</p>
+<h1 id="支付"><a href="#支付" class="headerlink" title="支付"></a>支付</h1><h2 id="支付接口"><a href="#支付接口" class="headerlink" title="支付接口"></a>支付接口</h2><p>很多应用都提供了支付接口，通过官方文档进行了解</p>
+<h2 id="沙箱环境"><a href="#沙箱环境" class="headerlink" title="沙箱环境"></a>沙箱环境</h2><p>支付宝提供的测试环境，模拟真实环境，供开发、测试使用</p>
+<h2 id="二维码"><a href="#二维码" class="headerlink" title="二维码"></a>二维码</h2><p>使用QRCodeUtil工具类可以将网址生成二维码</p>
+<p>扫描该二维码等同访问该地址</p>
+<h2 id="查询与通知"><a href="#查询与通知" class="headerlink" title="查询与通知"></a>查询与通知</h2><p>支付完成后，可以等待通知结果，也可以主动查询结果</p>
+<p>setNotiryUrl 设置通知路径</p>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>业务逻辑其实就是在处理数据模型中的数据</p>
+<p>选课表，订单表，订单明细表，支付记录表</p>
+<h2 id="订单号生成"><a href="#订单号生成" class="headerlink" title="订单号生成"></a>订单号生成</h2><p>订单号注意唯一性、安全性、尽量短等特点</p>
+<p>常用方案如下</p>
+<ol>
+<li>时间戳+随机数</li>
+</ol>
+<p>年月日时分秒亳秒+随机数</p>
+<ol>
+<li>高并发场景</li>
+</ol>
+<p>年月日时分秒毫秒+随机数+redis自增序列</p>
+<ol>
+<li>订单号中加上业务标识</li>
+</ol>
+<p>订单号加上业务标识方便客服，比如:第10位是业务类型，第11位是用户类型等。</p>
+<ol>
+<li>雪花算法</li>
+</ol>
+<p>雪花算法是推特内部使用的分布式环境下的唯一ID生成算法，它基于时间戳生成，保证有序递增，加以入计算机硬件等元素，可以满足高并发环境下ID不重复。</p>
+<h2 id="Long2String精度丢失"><a href="#Long2String精度丢失" class="headerlink" title="Long2String精度丢失"></a>Long2String精度丢失</h2><p>使用雪花算法生成的Long型id在转化为JSON传给前端时，会出现精度丢失。</p>
+<p>解决方案</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//long转string避免精度损失</span></span><br><span class="line"><span class="meta">@Bean</span></span><br><span class="line"><span class="keyword">public</span> ObjectMapper <span class="title function_">jacksonObjectMapper</span><span class="params">(Jackson2ObjectMapperBuilder builder)</span> &#123;</span><br><span class="line">    <span class="type">ObjectMapper</span> <span class="variable">objectMapper</span> <span class="operator">=</span> builder.createXmlMapper(<span class="literal">false</span>).build();</span><br><span class="line">    <span class="comment">//忽略value为null 时 key的输出</span></span><br><span class="line">    objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);</span><br><span class="line">    <span class="type">SimpleModule</span> <span class="variable">module</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">SimpleModule</span>();</span><br><span class="line">    <span class="keyword">module</span>.addSerializer(Long.class, ToStringSerializer.instance);</span><br><span class="line">    <span class="keyword">module</span>.addSerializer(Long.TYPE, ToStringSerializer.instance);</span><br><span class="line">    objectMapper.registerModule(<span class="keyword">module</span>);</span><br><span class="line">    <span class="keyword">return</span> objectMapper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="支付通知"><a href="#支付通知" class="headerlink" title="支付通知"></a>支付通知</h1><h2 id="创建交换机队列"><a href="#创建交换机队列" class="headerlink" title="创建交换机队列"></a>创建交换机队列</h2><p>通过配置类声明Bean的方式来创建</p>
+<p>在不同的微服务都进行创建，保证任何一个启动都能成功创建</p>
+<p>为保证消息可靠性，都设置为持久化</p>
+<p>持久化：将信息写入磁盘</p>
+<h2 id="rabbitTemplate"><a href="#rabbitTemplate" class="headerlink" title="rabbitTemplate"></a>rabbitTemplate</h2><p>correlationData</p>
+<p>可以指定发送消息后的回调方法（成功，失败）</p>
+<h2 id="接收消息"><a href="#接收消息" class="headerlink" title="接收消息"></a>接收消息</h2><p>订单服务付款成功后，发送消息到学习服务，学习服务更新选课记录和课程表</p>
+<h1 id="项目部署"><a href="#项目部署" class="headerlink" title="项目部署"></a>项目部署</h1><h2 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h2><p>DevOps（Development和Operations的组合词）是一组过程、方法与系统的统称，用于促进开发（应用程序&#x2F;软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。</p>
+<p>它是一种重视“软件开发人员（Dev）”和“IT运维技术人员（Ops）”之间沟通合作的文化、运动或惯例。透过自动化“软件交付”和“架构变更”的流程，来使得构建、测试、发布软件能够更加地快捷、频繁和可靠。</p>
+<p>它的出现是由于软件行业日益清晰地认识到：为了按时交付软件产品和服务，开发和运维工作必须紧密合作。</p>
+<h2 id="CI-x2F-CD"><a href="#CI-x2F-CD" class="headerlink" title="CI&#x2F;CD"></a>CI&#x2F;CD</h2><p>核心：全流程自动化</p>
+<p>持续集成：开发人员，开发环境</p>
+<p>持续交付：测试人员，类生产环节</p>
+<p>持续部署：运维人员，生产环节</p>
+<h2 id="手动部署"><a href="#手动部署" class="headerlink" title="手动部署"></a>手动部署</h2><p>打包插件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>Dockerfile</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> java:<span class="number">8</span>u20</span><br><span class="line"><span class="keyword">MAINTAINER</span> docker_maven docker_maven@email.com</span><br><span class="line"><span class="keyword">WORKDIR</span><span class="language-bash"> /ROOT</span></span><br><span class="line"><span class="keyword">ADD</span><span class="language-bash"> xuecheng-plus-checkcode-0.0.1-SNAPSHOT.jar xuecheng-plus-checkcode.jar</span></span><br><span class="line"><span class="keyword">CMD</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-version&quot;</span>]</span></span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="language-bash"> [<span class="string">&quot;java&quot;</span>, <span class="string">&quot;-Dfile.encoding=utf-8&quot;</span>,<span class="string">&quot;-jar&quot;</span>, <span class="string">&quot;xuecheng-plus-checkcode.jar&quot;</span>]</span></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">63075</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="自动部署"><a href="#自动部署" class="headerlink" title="自动部署"></a>自动部署</h2><p><strong>后端</strong></p>
+<p>Jenkins</p>
+<p>推送代码到主分支</p>
+<p>拉取代码</p>
+<p>打包</p>
+<p>构建docker镜像</p>
+<p>运行docker容器</p>
+<p><strong>前端</strong></p>
+<p>打包成静态文件，交给nginx</p>
+<h3 id="典型问题"><a href="#典型问题" class="headerlink" title="典型问题"></a>典型问题</h3><ol>
+<li>文件的路径</li>
+<li>专业软件</li>
+</ol>
+<h1 id="项目优化"><a href="#项目优化" class="headerlink" title="项目优化"></a>项目优化</h1><h2 id="优化需求"><a href="#优化需求" class="headerlink" title="优化需求"></a>优化需求</h2><ol>
+<li>数据库是性能的瓶颈</li>
+<li>关注不需要登录就能访问的接口</li>
+</ol>
+<h2 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h2><ol>
+<li>吞吐量</li>
+</ol>
+<p>吞吐量是系统每秒可以处理的事务数，也称为TPS (Transaction Per Second) 。</p>
+<p>比如:一次点播流程，从请求进入系统到视频画图显示出来这整个流程就是一次事务。所以吞吐量并不是一次数据库事务，它是完成一次业务的整体流程。</p>
+<ol>
+<li>响应时间</li>
+</ol>
+<p>响应时间是指客户端请求服务端，从请求进入系统到客户端拿到响应结果所经历的时间。</p>
+<p>响应时间包括:最大响应时间、最小响应时间、平均响应时间。</p>
+<ol>
+<li>每秒查询数</li>
+</ol>
+<p>每秒查询数即QPs (Queries-per-second)，它是衡量查询接口的性能指标，比如:商品信息查询，一秒可以请求该接口查询商品信息的次数就是QPS。</p>
+<p>拿查询接口举例，一次查询请求内部不会再去请求其它接口，此时QPS&#x3D;TPS如果一次查询请求内容需要远程调用另一个接口查询数据，此时 QPS&#x3D;2*TPS</p>
+<ol>
+<li>错误率</li>
+</ol>
+<p>错误率是一批请求发生错误的请求占全部请求的比例。</p>
+<h2 id="Jmeter"><a href="#Jmeter" class="headerlink" title="Jmeter"></a>Jmeter</h2><p>Jmeter是由Apache公司开发的一个纯Java的开源项目，即可以用于做接口测试也可以用于做性能测试。</p>
+<h2 id="日志级别"><a href="#日志级别" class="headerlink" title="日志级别"></a>日志级别</h2><p>DEBUG基本得日志会影响性能，修改为INFO级别</p>
+<h2 id="redis缓存"><a href="#redis缓存" class="headerlink" title="redis缓存"></a>redis缓存</h2><p>将查询结果变成JSON串存入redis，加快查询</p>
+<p>设置过期时间</p>
+<p>基于高并发场景讨论</p>
+<h3 id="缓存穿透"><a href="#缓存穿透" class="headerlink" title="缓存穿透"></a>缓存穿透</h3><p>我们使用Redis大部分情况都是通过Key查询对应的值，假如发送的请求传进来的key是不存在Redis中的，那么就查不到缓存，查不到缓存就会去数据库查询。假如有大量这样的请求，这些请求像“穿透”了缓存一样直接打在数据库上，这种现象就叫做缓存穿透。</p>
+<p><strong>解决方案</strong></p>
+<ol>
+<li>增加请求校验</li>
+<li>布隆过滤器（高效插入和查询，占用空间小）</li>
+<li>缓存空值，将查询结果为空的数据也缓存起来，避免多次查询</li>
+</ol>
+<h3 id="缓存雪崩"><a href="#缓存雪崩" class="headerlink" title="缓存雪崩"></a>缓存雪崩</h3><p>缓存雪崩是指在一个时间段内，缓存中的大量数据同时失效或者缓存服务不可用，导致大量的请求直接访问数据库或其他数据存储，从而造成了系统性能下降或者宕机的现象。</p>
+<p><strong>解决方案</strong></p>
+<ol>
+<li>同步锁控制执行得线程</li>
+<li>设置不同的过期时间（随机数）</li>
+<li>缓存预热</li>
+</ol>
+<h3 id="缓存击穿"><a href="#缓存击穿" class="headerlink" title="缓存击穿"></a>缓存击穿</h3><p>缓存击穿是指大量并发访问同一个<strong>热点数据</strong>，当热点数据失效后同时去请求数据库，瞬间耗尽数据库资源，导致数据库无法使用。</p>
+<p><strong>解决方案</strong></p>
+<ol>
+<li>同步锁（双重锁校验）</li>
+<li>热点数据永不过期</li>
+</ol>
+<h2 id="分布式锁-1"><a href="#分布式锁-1" class="headerlink" title="分布式锁"></a>分布式锁</h2><p>synchronized关键字只能保证单个JVM内部的同步</p>
+<p>当涉及到多个实例时，要使用分布式锁</p>
+<ol>
+<li>Setnx实现分布式锁</li>
+</ol>
+<p>存在问题</p>
+<ol>
+<li>redisson</li>
+</ol>
+<p>watchdog线程，自动为锁续期（没有执行完时），断电时锁也能自动过期</p>
+<p>自旋锁，非阻塞，会重试</p>
+<p>实现了Lock接口，方便在JAVA代码中使用</p>
+<p>原理是基于上面的setnx和lua脚本实现原子操作</p>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%90%8E%E7%AB%AF/">后端</a><a class="post-meta__tags" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a><a class="post-meta__tags" href="/tags/Java/">Java</a></div><div class="post_share"><div class="social-share" data-image="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/06/06/%E7%94%B5%E5%BD%B1/%E3%80%8A%E5%9E%AB%E5%BA%95%E8%BE%A3%E5%A6%B9%E3%80%8B/"><img class="prev-cover" src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306062104776.jpeg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">《垫底辣妹》</div></div></a></div><div class="next-post pull-right"><a href="/2023/06/01/%E8%AE%A1%E7%AE%97%E6%9C%BA/RabbitMQ%E8%BF%9B%E9%98%B6/"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/realyoume/pic/img/202306011644574.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">RabbitMQ进阶</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2023/04/23/%E8%AE%A1%E7%AE%97%E6%9C%BA/Java%20%E5%9F%BA%E7%A1%80/" title="Java 基础"><img class="cover" src="https://picx.zhimg.com/80/v2-73b8307b2db44c617f4e8515ce67dd39_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-23</div><div class="title">Java 基础</div></div></a></div><div><a href="/2022/11/17/%E8%AE%A1%E7%AE%97%E6%9C%BA/Nacos%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/" title="Nacos配置管理"><img class="cover" src="https://pic2.zhimg.com/v2-d9bc3c1899c4a2dbe8cd692677b07559_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-17</div><div class="title">Nacos配置管理</div></div></a></div><div><a href="/2023/04/25/%E8%AE%A1%E7%AE%97%E6%9C%BA/Java%20%E9%9B%86%E5%90%88/" title="Java 集合"><img class="cover" src="https://pic1.zhimg.com/80/v2-a196f39112d5287f0214eb50b94563ce_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-04-25</div><div class="title">Java 集合</div></div></a></div><div><a href="/2022/11/17/%E8%AE%A1%E7%AE%97%E6%9C%BA/nacos%E9%9B%86%E7%BE%A4%E6%90%AD%E5%BB%BA/" title="Nacos集群搭建"><img class="cover" src="https://picx.zhimg.com/80/v2-f85f658e4f785d48cf04dd8f47acc6fa_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-11-17</div><div class="title">Nacos集群搭建</div></div></a></div><div><a href="/2022/09/13/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E4%BD%BF%E7%94%A8Sharding-JDBC%E5%AE%9E%E7%8E%B0%E8%AF%BB%E5%86%99%E5%88%86%E7%A6%BB/" title="使用Sharding-JDBC实现读写分离"><img class="cover" src="https://pic3.zhimg.com/v2-a011510812de21b7247e580cdca05cc6_b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-09-13</div><div class="title">使用Sharding-JDBC实现读写分离</div></div></a></div><div><a href="/2023/05/08/%E8%AE%A1%E7%AE%97%E6%9C%BA/%E5%85%AB%E8%82%A1-Java%20JVM/" title="八股-Java JVM"><img class="cover" src="https://picx.zhimg.com/80/v2-73b8307b2db44c617f4e8515ce67dd39_720w.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-05-08</div><div class="title">八股-Java JVM</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-text">项目结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MybatisPlus"><span class="toc-text">MybatisPlus</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E9%A1%B5%E6%9F%A5%E8%AF%A2"><span class="toc-text">分页查询</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%A0%E4%BD%8D%E7%AC%A6"><span class="toc-text">占位符</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Swagger"><span class="toc-text">Swagger</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%AD%97%E5%85%B8%E8%A1%A8"><span class="toc-text">数据字典表</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95"><span class="toc-text">单元测试</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#HttpClient"><span class="toc-text">HttpClient</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B7%A8%E5%9F%9F"><span class="toc-text">跨域</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91%E5%BD%A2%E7%BB%93%E6%9E%84"><span class="toc-text">树形结构</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#list-2-map"><span class="toc-text">list 2 map</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建对象</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Beanutils-copyProperties"><span class="toc-text">Beanutils.copyProperties</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%9F%E4%B8%80%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86"><span class="toc-text">统一异常处理</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C"><span class="toc-text">参数校验</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%8E%B0"><span class="toc-text">服务发现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86"><span class="toc-text">配置管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#extension-configs"><span class="toc-text">extension-configs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#shared-configs"><span class="toc-text">shared-configs</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">配置优先级</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Gateway"><span class="toc-text">Gateway</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MinIO"><span class="toc-text">MinIO</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker%E5%90%AF%E5%8A%A8MinIO"><span class="toc-text">Docker启动MinIO</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java%E6%93%8D%E4%BD%9CMinio"><span class="toc-text">Java操作Minio</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E5%8F%A3%E5%AE%9E%E7%8E%B0"><span class="toc-text">接口实现</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Transactional"><span class="toc-text">@Transactional</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Spring-%E4%BA%8B%E5%8A%A1%E5%A4%B1%E6%95%88"><span class="toc-text">Spring 事务失效</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E4%B8%8A%E4%BC%A0"><span class="toc-text">视频上传</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%AD%E7%82%B9%E7%BB%AD%E4%BC%A0"><span class="toc-text">断点续传</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%88%E5%B9%B6%E5%88%86%E5%9D%97"><span class="toc-text">合并分块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A0%E9%99%A4%E5%88%86%E5%9D%97"><span class="toc-text">删除分块</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E8%BD%AC%E7%A0%81"><span class="toc-text">视频转码</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#FFmpeg"><span class="toc-text">FFmpeg</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6"><span class="toc-text">分布式任务调度</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#XXL-JOB"><span class="toc-text">XXL-JOB</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%B9%B6%E7%BB%91%E5%AE%9A%E6%89%A7%E8%A1%8C%E5%99%A8"><span class="toc-text">配置并绑定执行器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C%E4%BB%BB%E5%8A%A1"><span class="toc-text">执行任务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AB%98%E7%BA%A7%E9%85%8D%E7%BD%AE"><span class="toc-text">高级配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81"><span class="toc-text">分布式锁</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%96%B9%E5%BC%8F"><span class="toc-text">实现方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CountDownLacth"><span class="toc-text">CountDownLacth</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%86%E9%A2%91%E4%B8%8A%E4%BC%A0%E4%B8%8E%E5%A4%84%E7%90%86%E5%AE%9E%E7%8E%B0"><span class="toc-text">视频上传与处理实现</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FreeMarker"><span class="toc-text">FreeMarker</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="toc-text">快速开始</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E8%AF%BE%E7%A8%8B"><span class="toc-text">发布课程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1"><span class="toc-text">分布式事务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B6%88%E6%81%AF%E5%A4%84%E7%90%86SDK"><span class="toc-text">消息处理SDK</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E9%9D%99%E6%80%81%E5%8C%96"><span class="toc-text">页面静态化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-freemarker-%E7%94%9F%E6%88%90%E9%9D%99%E6%80%81-html-%E9%A1%B5%E9%9D%A2"><span class="toc-text">使用 freemarker 生成静态 html 页面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E5%AA%92%E8%B5%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6"><span class="toc-text">调用媒资微服务上传文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%86%94%E6%96%AD%E9%99%8D%E7%BA%A7"><span class="toc-text">熔断降级</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%BE%E7%A8%8B%E6%90%9C%E7%B4%A2"><span class="toc-text">课程搜索</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%AE%A4%E8%AF%81"><span class="toc-text">用户认证</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%9B%86%E6%88%90Spring-Security"><span class="toc-text">集成Spring Security</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OAuth2"><span class="toc-text">OAuth2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%A1%E7%90%86%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%BF%E9%97%AE"><span class="toc-text">管理微服务访问</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E5%85%B3"><span class="toc-text">网关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E7%BB%9F%E4%B8%80%E7%99%BB%E5%BD%95"><span class="toc-text">实现统一登录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BE%AE%E4%BF%A1%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95"><span class="toc-text">微信扫码登录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#String-format"><span class="toc-text">String format</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RestTemplate"><span class="toc-text">RestTemplate</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8E%88%E6%9D%83"><span class="toc-text">授权</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#RBAC"><span class="toc-text">RBAC</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9D%83%E9%99%90%E6%A0%87%E8%AF%86"><span class="toc-text">权限标识</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%89%B4%E6%9D%83%E5%8E%9F%E7%90%86"><span class="toc-text">鉴权原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%BB%93%E6%9E%84"><span class="toc-text">数据库结构</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E8%AF%BB%E5%8F%96%E6%9D%83%E9%99%90"><span class="toc-text">动态读取权限</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%86%E7%B2%92%E5%BA%A6%E6%8E%88%E6%9D%83"><span class="toc-text">细粒度授权</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%80%89%E8%AF%BE"><span class="toc-text">选课</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E6%9C%9F%E6%A0%BC%E5%BC%8F"><span class="toc-text">日期格式</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E4%BB%98"><span class="toc-text">支付</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E6%8E%A5%E5%8F%A3"><span class="toc-text">支付接口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B2%99%E7%AE%B1%E7%8E%AF%E5%A2%83"><span class="toc-text">沙箱环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="toc-text">二维码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E4%B8%8E%E9%80%9A%E7%9F%A5"><span class="toc-text">查询与通知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E6%A8%A1%E5%9E%8B"><span class="toc-text">数据模型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%A2%E5%8D%95%E5%8F%B7%E7%94%9F%E6%88%90"><span class="toc-text">订单号生成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Long2String%E7%B2%BE%E5%BA%A6%E4%B8%A2%E5%A4%B1"><span class="toc-text">Long2String精度丢失</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%94%AF%E4%BB%98%E9%80%9A%E7%9F%A5"><span class="toc-text">支付通知</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E9%98%9F%E5%88%97"><span class="toc-text">创建交换机队列</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rabbitTemplate"><span class="toc-text">rabbitTemplate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8E%A5%E6%94%B6%E6%B6%88%E6%81%AF"><span class="toc-text">接收消息</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E9%83%A8%E7%BD%B2"><span class="toc-text">项目部署</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#DevOps"><span class="toc-text">DevOps</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CI-x2F-CD"><span class="toc-text">CI&#x2F;CD</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-text">手动部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%87%AA%E5%8A%A8%E9%83%A8%E7%BD%B2"><span class="toc-text">自动部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B8%E5%9E%8B%E9%97%AE%E9%A2%98"><span class="toc-text">典型问题</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BC%98%E5%8C%96"><span class="toc-text">项目优化</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E9%9C%80%E6%B1%82"><span class="toc-text">优化需求</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="toc-text">性能指标</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Jmeter"><span class="toc-text">Jmeter</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%A5%E5%BF%97%E7%BA%A7%E5%88%AB"><span class="toc-text">日志级别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#redis%E7%BC%93%E5%AD%98"><span class="toc-text">redis缓存</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="toc-text">缓存穿透</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="toc-text">缓存雪崩</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="toc-text">缓存击穿</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81-1"><span class="toc-text">分布式锁</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer" style="background-image: url('https://pic1.zhimg.com/v2-83876de3f901861a2939eaf66f30050c_r.jpg')"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2024 By realyoume</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
